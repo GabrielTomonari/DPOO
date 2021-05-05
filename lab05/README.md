@@ -1,6 +1,6 @@
 # Apresentação da Tarefa
 
-Tarefa relativa ao laboratório de "Jogo de Damas B"
+Tarefa relativa ao laboratório de "Jogo de Damas A e B"
 
 # Alunos
 * Antonio D Lucas Jr - RA 165677
