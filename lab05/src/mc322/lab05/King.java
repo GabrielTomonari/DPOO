@@ -8,7 +8,7 @@ public class King extends Piece{
     }
 
     @Override
-    public boolean validateMove(MatrixPosition target) {
+    public boolean solicitaMovimento(MatrixPosition target) {
         if(Math.abs(target.lin - this.pos.lin) == Math.abs(target.col - this.pos.col)){
             return true;
         }
@@ -16,7 +16,7 @@ public class King extends Piece{
     }
 
     @Override
-    public boolean validateCapture(MatrixPosition target, Piece pieceToCapture) {
+    public boolean solicitaMovimento(MatrixPosition target, Piece pieceToCapture) {
         if (this.pieceColor == pieceToCapture.pieceColor){
             return false;
         }

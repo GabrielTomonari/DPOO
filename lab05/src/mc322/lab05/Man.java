@@ -7,7 +7,7 @@ public class Man extends Piece {
     }
 
     @Override
-    public boolean validateMove(MatrixPosition target) {
+    public boolean solicitaMovimento(MatrixPosition target) {
         int linInc = 0;
         
         if(this.pieceColor == 'p'){
@@ -19,14 +19,14 @@ public class Man extends Piece {
         if (target.lin - this.pos.lin != linInc) {
             return false;
         }
-        if (Math.abs(target.col - this.pos.col) > 1) {
+        if (Math.abs(target.col - this.pos.col) > 1 || Math.abs(target.col - this.pos.col) == 0) {
             return false;
         }
         return true;
     }
 
     @Override
-    public boolean validateCapture(MatrixPosition target, Piece pieceToCapture) {
+    public boolean solicitaMovimento(MatrixPosition target, Piece pieceToCapture) {
         if (Math.abs(target.lin - this.pos.lin) > 2) {
             return false;
         }

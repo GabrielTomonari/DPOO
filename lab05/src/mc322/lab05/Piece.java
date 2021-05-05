@@ -7,11 +7,11 @@ public class Piece {
         return this.pos;
     }
 
-    public boolean validateMove(MatrixPosition target) {
+    public boolean solicitaMovimento(MatrixPosition target) {
         return true;
     }
 
-    public boolean validateCapture(MatrixPosition target, Piece pieceToCapture) {
+    public boolean solicitaMovimento(MatrixPosition target, Piece pieceToCapture) {
         return true;
     }
 }

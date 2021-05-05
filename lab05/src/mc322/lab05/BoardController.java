@@ -81,7 +81,7 @@ public class BoardController {
 
         MatrixPosition pos = new MatrixPosition(source.lin + linInc, source.col + colInc);
         while (pos.lin != target.lin && pos.col != target.col) {
-            if (this.state.getPieceAt(pos).pieceColor != '-') {
+            if (this.state.getPieceAt(pos).pieceColor != '_') {
                 if(!foundPiece){
                     foundPiece = true;
                 }else{
@@ -101,7 +101,7 @@ public class BoardController {
 
         MatrixPosition pos = new MatrixPosition(source.lin + linInc, source.col + colInc);
         while (pos.lin != target.lin && pos.col != target.col) {
-            if (this.state.getPieceAt(pos).pieceColor != '-') {
+            if (this.state.getPieceAt(pos).pieceColor != '_') {
                 return false;
             }
             pos.lin += linInc;
@@ -139,6 +139,16 @@ public class BoardController {
 
     }
 
+    private void concludeMovimentRoutine(){
+            this.state.imprimirTabuleiro();
+            this.state.saveStateOnHistory();
+    }
+
+    private void invalidMovimentRoutine(){
+            this.state.imprimirMensagemErro();
+            this.state.saveError();
+    }
+
     public void executeCommand(String cmd) {
         if (this.isValidCommand(cmd)) {
             MatrixPosition source = extractSourceFromCmd(cmd);
@@ -151,19 +161,22 @@ public class BoardController {
             }
 
             this.promotePieces();
+        }else{
+            this.invalidMovimentRoutine();
         }
-
-        this.state.printState();
-        this.state.saveStateOnHistory();
     }
 
     public void executeMovement(MatrixPosition source, MatrixPosition target) {
         Piece piece = this.state.getPieceAt(source);
 
-        if (piece.validateMove(target)) {
+        if (piece.solicitaMovimento(target)) {
             this.state.removePieceAt(source);
             MatrixPosition newPos = piece.executeMove(target);
             this.state.placePieceAt(piece, newPos);
+
+            this.concludeMovimentRoutine();
+        }else {
+            this.invalidMovimentRoutine();
         }
     }
 
@@ -175,7 +188,7 @@ public class BoardController {
         MatrixPosition pos = new MatrixPosition(source.lin + linInc, source.col + colInc);
         while (pos.lin != target.lin && pos.col != target.col) {
             currentPiece = this.state.getPieceAt(pos);
-            if (currentPiece.pieceColor != '-') {
+            if (currentPiece.pieceColor != '_') {
                 return currentPiece;
             }
             pos.lin += linInc;
@@ -190,7 +203,7 @@ public class BoardController {
         Piece piece = this.state.getPieceAt(source);
         Piece pieceToRemove = this.getCapturedPiece(source, target);
 
-        if (piece.validateCapture(target, pieceToRemove)) {
+        if (piece.solicitaMovimento(target, pieceToRemove)) {
             // move the source piece
             this.state.removePieceAt(source);
             MatrixPosition newPos = piece.executeMove(target);
@@ -198,6 +211,11 @@ public class BoardController {
 
             // remove the captured piece
             this.state.removePieceAt(pieceToRemove.pos);
+
+            // print the board and save
+            this.concludeMovimentRoutine();
+        }else {
+            this.invalidMovimentRoutine();
         }
     }
 }

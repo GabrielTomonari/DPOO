@@ -81,17 +81,16 @@ Kings:
 
 
 TODO LIST:
-BoardController:
-	[Eiji] isValidCommand
-	[Toni] isCapture
-	[Toni] executeCapture
+    MAIN:
+        Receber o path de entrada e saida na
 
-King:
-	[Eiji] validateMove
-	[Eiji] validateCapture
-	
-Man:
-	[Eiji] validateMove
-	[Eiji] validateCapture
+    BoardController:
+        [x] Mudar o isValidMove para solicitaMovimento
+        [x] Mudar o printState para imprimirTabuleiro
+        Incluir os erros na rejeição do comando
+
+    StateManager:
+        criar a funcao de exporta arquivo
+
 
 [Eiji] Arquivos CSV de teste

@@ -1,16 +1,16 @@
 public class EmptyPiece extends Piece{
     EmptyPiece(MatrixPosition pos){
-        this.pieceColor = '-';
+        this.pieceColor = '_';
         this.pos = pos;
     }
 
     @Override
-    public boolean validateMove(MatrixPosition target) {
+    public boolean solicitaMovimento(MatrixPosition target) {
         return false;
     }
 
     @Override
-    public boolean validateCapture(MatrixPosition target, Piece pieceToCapture) {
+    public boolean solicitaMovimento(MatrixPosition target, Piece pieceToCapture) {
         return false;
     }
 }
