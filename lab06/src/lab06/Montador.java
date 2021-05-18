@@ -1,0 +1,6 @@
+/**
+ * Montador
+ */
+public class Montador {
+
+}

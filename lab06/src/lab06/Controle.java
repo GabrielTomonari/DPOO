@@ -1,0 +1,6 @@
+/**
+ * Controle
+ */
+public class Controle {
+
+}

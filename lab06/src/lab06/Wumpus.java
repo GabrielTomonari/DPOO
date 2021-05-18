@@ -1,0 +1,6 @@
+/**
+ * Wumpus
+ */
+public class Wumpus {
+
+}

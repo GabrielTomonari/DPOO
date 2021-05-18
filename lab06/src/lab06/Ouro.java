@@ -1,0 +1,6 @@
+/**
+ * Ouro
+ */
+public class Ouro {
+
+}

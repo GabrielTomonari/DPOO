@@ -1,0 +1,6 @@
+/**
+ * Buraco
+ */
+public class Buraco {
+
+}
