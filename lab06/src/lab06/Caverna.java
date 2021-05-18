@@ -1,0 +1,6 @@
+/**
+ * Caverna
+ */
+public class Caverna {
+
+}

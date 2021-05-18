@@ -1,0 +1,6 @@
+/**
+ * Componente
+ */
+public class Componente {
+
+}

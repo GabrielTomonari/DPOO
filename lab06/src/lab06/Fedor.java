@@ -1,0 +1,6 @@
+/**
+ * Fedor
+ */
+public class Fedor {
+
+}

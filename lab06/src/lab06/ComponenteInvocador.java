@@ -1,0 +1,6 @@
+/**
+ * ComponenteInvocador
+ */
+public class ComponenteInvocador {
+
+}

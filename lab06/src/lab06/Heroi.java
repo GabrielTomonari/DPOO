@@ -1,0 +1,6 @@
+/**
+ * Heroi
+ */
+public class Heroi {
+
+}
