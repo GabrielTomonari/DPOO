@@ -16,18 +16,24 @@ public class AppMundoWumpus {
 
         // Caverna
         Caverna cave = new Caverna();
-
+        
         // Montador
         Montador montador = new Montador(csv);
         montador.montarCaverna(cave);
-        cave.imprimeEstado();
 
         // Controlador
-        Controle controlador = new Controle(montador.pegarHeroi());
+        Controle controlador = new Controle( (Heroi) montador.pegarHeroi());
+
+        //Imprime Estado
+        ImprimeEstado imprime = new ImprimeEstado(cave, controlador);
+        imprime.imprimirEstado();
+
+        // Rotina de Jogo
         while(controlador.ehJogo){
             controlador.leComando();
             controlador.executaComando();
-            cave.imprimeEstado();
+            imprime.imprimirEstado();
         }
+        imprime.imprimirFimDeJogo();
     }
 }

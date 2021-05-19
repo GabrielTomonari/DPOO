@@ -34,8 +34,12 @@ public abstract class Componente {
         this.cave = cave;
     }
 
-    void posicionar(){
-        this.cave.colocarComponente(this, this.pos);
+    boolean posicionar(){
+        if(this.cave.validarColocacao(this.pos)){
+            this.cave.colocarComponente(this, this.pos);
+            return true;
+        }
+        return false;
     }
 
     boolean validarMovimento(Posicao pos){

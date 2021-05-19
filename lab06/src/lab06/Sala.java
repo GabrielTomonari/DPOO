@@ -1,14 +1,12 @@
 import java.lang.reflect.Array;
 
-import Componente.Tipos;
-
 public class Sala {
     private Componente[] componentes;
     private int qtdComponentes;
     private boolean foiVisitada;
 
     Sala() {
-        this.componentes = new Componente[4];
+        this.componentes = new Componente[6];
         this.qtdComponentes = 0;
     }
 
@@ -29,26 +27,46 @@ public class Sala {
 
         this.componentes[this.qtdComponentes] = componente;
         this.qtdComponentes++;
+        executarInteracao();
         organizaComponentes();
-
-        if (componente.tipo == Componente.Tipos.HEROI) {
-            this.foiVisitada = true;
-        }
     }
 
-    public void removerComponente(Componente componente){
+    private void executarInteracao() {
+
+    }
+
+    public void removerComponente(Componente componente) {
         Componente[] temp;
         for (int i = 0; i < this.qtdComponentes; i++) {
             if (componentes[i] == componente) {
-                for (int j = i; j < this.qtdComponentes; j++) {
-                    this.componentes[j] = this.componentes[j+1];
+                for (int j = i; j < this.qtdComponentes - 1; j++) {
+                    this.componentes[j] = this.componentes[j + 1];
                 }
             }
         }
         this.qtdComponentes--;
     }
 
+    private boolean isWBO(Componente componente) {
+        if (componente.tipo == Componente.Tipos.WUMPUS || componente.tipo == Componente.Tipos.BURACO
+                || componente.tipo == Componente.Tipos.OURO) {
+            return true;
+        }
+        return false;
+    }
+
     public boolean validarColocacao(Componente componente) {
+        if(qtdComponentes == 0){
+            return true;
+        }
+
+        if (isWBO(componente)) {
+            for (int i = 0; i < qtdComponentes; i++) {
+                if (isWBO(componentes[i])) {
+                    return false;
+                }
+            }
+        }
         return true;
     }
 
@@ -91,6 +109,15 @@ public class Sala {
 
     public void marcarVisitada() {
         this.foiVisitada = true;
+    }
+
+    public Componente buscarComponente(Componente.Tipos tipo) {
+        for (int i = 0; i < this.qtdComponentes; i++) {
+            if (componentes[i].tipo == tipo) {
+                return componentes[i];
+            }
+        }
+        return null;
     }
 
 }
