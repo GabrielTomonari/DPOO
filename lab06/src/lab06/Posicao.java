@@ -8,8 +8,6 @@ public class Posicao {
     }
 
     Posicao(String pos) {
-        int linha = Character.getNumericValue(pos.charAt(0));
-        int coluna = Character.getNumericValue(pos.charAt(2));
-        new Posicao(linha, coluna);
+        this(Character.getNumericValue(pos.charAt(0))-1, Character.getNumericValue(pos.charAt(2))-1);
     }
 }

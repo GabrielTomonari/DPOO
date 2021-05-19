@@ -1,19 +1,30 @@
 import java.time.format.FormatStyle;
+import java.util.Scanner;
 
 /**
  * Controle
  */
 public class Controle {
+    enum Comandos{
+        CIMA, DIREITA, ESQUERDA, BAIXO, SAIR
+    }
     boolean ehJogo;
     Componente heroi;
+    Comandos comando;
+    Scanner keyboard = new Scanner(System.in);
+    
 
     Controle(Componente heroi) {
         this.ehJogo = true;
+        this.comando = null;
         this.heroi = heroi;
     }
 
     public void leComando() {
-        //le o comando e guarda num enum
+        String command = keyboard.nextLine();
+        if (command == "d") {
+            this.comando = Comandos.DIREITA;
+        }
     }
 
 
