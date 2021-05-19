@@ -13,24 +13,25 @@ public class Caverna {
         }
     }
 
-    private Sala salaEm(Posicao posicao){
+    private Sala salaEm(Posicao posicao) {
         return salas[posicao.linha][posicao.coluna];
     }
 
-    boolean validarColocacao(Posicao posicao, Sala salaAlvo, Componente componente){
-        if(posicao.linha < 0 || posicao.linha >= salas.length){
+    boolean validarColocacao(Posicao posicao, Componente componente) {
+        if (posicao.linha < 0 || posicao.linha >= salas.length) {
             return false;
         }
-        if(posicao.coluna < 0 || posicao.coluna >= salas[0].length){
+        if (posicao.coluna < 0 || posicao.coluna >= salas[0].length) {
             return false;
         }
+        Sala salaAlvo = salaEm(posicao);
         return salaAlvo.validarColocacao(componente);
     }
 
     void colocarComponente(Componente componente, Posicao posicao) {
         Sala salaAlvo = salaEm(posicao);
 
-        if (this.validarColocacao(posicao, salaAlvo, componente)) {
+        if (this.validarColocacao(posicao, componente)) {
             salaAlvo.colocarComponente(componente);
         }
     }
@@ -61,24 +62,24 @@ public class Caverna {
         System.out.println("  1 2 3 4\n");
     }
 
-    public boolean existeComponenteDoTipo(Componente.Tipos tipo, Posicao posicao){
+    public boolean existeComponenteDoTipo(Componente.Tipos tipo, Posicao posicao) {
         Sala salaAlvo = salaEm(posicao);
 
-        if(salaAlvo.buscarComponente(tipo) != null){
+        if (salaAlvo.buscarComponente(tipo) != null) {
             return true;
-        }else{
+        } else {
             return false;
         }
     }
 
-    public void removerOuro(Posicao posicao){
+    public void removerOuro(Posicao posicao) {
         Sala salaAlvo = salaEm(posicao);
         Ouro ouro = (Ouro) salaAlvo.buscarComponente(Componente.Tipos.OURO);
 
         salaAlvo.removerComponente(ouro);
     }
 
-    public void removerWumpus(Posicao posicao){
+    public void removerWumpus(Posicao posicao) {
         Sala salaAlvo = salaEm(posicao);
         Wumpus wumpus = (Wumpus) salaAlvo.buscarComponente(Componente.Tipos.WUMPUS);
 

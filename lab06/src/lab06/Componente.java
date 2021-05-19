@@ -7,12 +7,12 @@ public abstract class Componente {
         BURACO, HEROI, OURO, WUMPUS, BRISA, FEDOR, VAZIA
     }
 
-    static int pegarPrioridade(Componente componente){
+    static int pegarPrioridade(Componente componente) {
         switch (componente.tipo) {
             case BURACO:
             case OURO:
             case WUMPUS:
-                return 4;    
+                return 4;
             case HEROI:
                 return 3;
             case FEDOR:
@@ -34,23 +34,23 @@ public abstract class Componente {
         this.cave = cave;
     }
 
-    boolean posicionar(){
-        if(this.cave.validarColocacao(this.pos)){
+    boolean posicionar() {
+        if (this.cave.validarColocacao(this.pos, this)) {
             this.cave.colocarComponente(this, this.pos);
             return true;
         }
         return false;
     }
 
-    boolean validarMovimento(Posicao pos){
+    boolean validarMovimento(Posicao pos) {
         return true;
     }
 
-    void sairDaSala(){
+    void sairDaSala() {
         this.cave.removerComponente(this, this.pos);
     }
 
-    void moverPara(Posicao pos){
+    void moverPara(Posicao pos) {
         this.pos = pos;
         this.cave.colocarComponente(this, this.pos);
     }

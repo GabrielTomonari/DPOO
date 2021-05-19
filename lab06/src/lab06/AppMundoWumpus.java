@@ -3,8 +3,8 @@
  */
 public class AppMundoWumpus {
     public static void main(String[] args) {
-        String caminho_entrada = "/home/eiji/Development/MC322/DPOO/lab06/data/teste01.csv";
-        
+        String caminho_entrada = "/home/antonio/Graduação/DPOO/lab06/data/teste01.csv";
+
         // get the args value
         if (args.length != 0) {
             caminho_entrada = args[0];
@@ -16,20 +16,20 @@ public class AppMundoWumpus {
 
         // Caverna
         Caverna cave = new Caverna();
-        
+
         // Montador
         Montador montador = new Montador(csv);
         montador.montarCaverna(cave);
 
         // Controlador
-        Controle controlador = new Controle( (Heroi) montador.pegarHeroi());
+        Controle controlador = new Controle((Heroi) montador.pegarHeroi());
 
-        //Imprime Estado
+        // Imprime Estado
         ImprimeEstado imprime = new ImprimeEstado(cave, controlador);
         imprime.imprimirEstado();
 
         // Rotina de Jogo
-        while(controlador.ehJogo){
+        while (controlador.ehJogo) {
             controlador.leComando();
             controlador.executaComando();
             imprime.imprimirEstado();
