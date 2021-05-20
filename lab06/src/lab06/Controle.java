@@ -24,7 +24,7 @@ public class Controle {
         System.out.print("Digite o comando: ");
         String command = keyboard.nextLine();
 
-        if(command!=null){
+        if (command != null && command.length() == 1) {
             switch (command.charAt(0)) {
                 case 'd':
                     this.comando = Comandos.DIREITA;
@@ -51,8 +51,8 @@ public class Controle {
                     this.comando = Comandos.INVALIDO;
                     break;
             }
-        }else{
-            System.out.println("Comando não pode ser vazio!");
+        } else {
+            System.out.println("Comando deve ser de uma letra!");
         }
     }
 
