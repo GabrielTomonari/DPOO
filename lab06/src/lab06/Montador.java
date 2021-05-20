@@ -49,10 +49,11 @@ public class Montador {
                     componente = new Vazia(pos, cave);
                     break;
             }
-            if(!componente.posicionar()){
+            if (!componente.posicionar()) {
                 System.out.println("Não pode haver Wumpus, Buraco ou Ouro no mesmo local");
                 System.exit(0);
-            };
+            }
+            ;
         }
         if (jogadores != 1) {
             System.out.println("O jogo deve ter exatamente 1 jogador");

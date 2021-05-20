@@ -27,12 +27,7 @@ public class Sala {
 
         this.componentes[this.qtdComponentes] = componente;
         this.qtdComponentes++;
-        executarInteracao();
         organizaComponentes();
-    }
-
-    private void executarInteracao() {
-
     }
 
     public void removerComponente(Componente componente) {
@@ -56,7 +51,7 @@ public class Sala {
     }
 
     public boolean validarColocacao(Componente componente) {
-        if(qtdComponentes == 0){
+        if (qtdComponentes == 0) {
             return true;
         }
 

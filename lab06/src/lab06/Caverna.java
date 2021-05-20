@@ -17,15 +17,22 @@ public class Caverna {
         return salas[posicao.linha][posicao.coluna];
     }
 
-    boolean validarColocacao(Posicao posicao, Componente componente) {
+    boolean posicaoEmCaverna(Posicao posicao) {
         if (posicao.linha < 0 || posicao.linha >= salas.length) {
             return false;
         }
         if (posicao.coluna < 0 || posicao.coluna >= salas[0].length) {
             return false;
         }
-        Sala salaAlvo = salaEm(posicao);
-        return salaAlvo.validarColocacao(componente);
+        return true;
+    }
+
+    boolean validarColocacao(Posicao posicao, Componente componente) {
+        if (posicaoEmCaverna(posicao)) {
+            Sala salaAlvo = salaEm(posicao);
+            return salaAlvo.validarColocacao(componente);
+        }
+        return false;
     }
 
     void colocarComponente(Componente componente, Posicao posicao) {
@@ -79,11 +86,37 @@ public class Caverna {
         salaAlvo.removerComponente(ouro);
     }
 
+    private void removerFedor(Posicao posicao) {
+        Sala sala = salaEm(posicao);
+        Fedor fedor = (Fedor) sala.buscarComponente(Componente.Tipos.FEDOR);
+        sala.removerComponente(fedor);
+    }
+
     public void removerWumpus(Posicao posicao) {
         Sala salaAlvo = salaEm(posicao);
         Wumpus wumpus = (Wumpus) salaAlvo.buscarComponente(Componente.Tipos.WUMPUS);
-
         salaAlvo.removerComponente(wumpus);
+
+        Posicao posCima = new Posicao(posicao.linha - 1, posicao.coluna);
+        if (posicaoEmCaverna(posCima)) {
+            removerFedor(posCima);
+        }
+
+        Posicao posBaixo = new Posicao(posicao.linha + 1, posicao.coluna);
+        if (posicaoEmCaverna(posBaixo)) {
+            removerFedor(posBaixo);
+        }
+
+        Posicao posDireita = new Posicao(posicao.linha, posicao.coluna + 1);
+        if (posicaoEmCaverna(posDireita)) {
+            removerFedor(posDireita);
+        }
+
+        Posicao posEsquerda = new Posicao(posicao.linha, posicao.coluna - 1);
+        if (posicaoEmCaverna(posEsquerda)) {
+            removerFedor(posEsquerda);
+        }
+
     }
 
 }
