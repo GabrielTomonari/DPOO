@@ -3,7 +3,7 @@
  */
 public class AppMundoWumpus {
     public static void main(String[] args) {
-        String caminho_entrada = "/home/antonio/Graduação/DPOO/lab06/data/teste01.csv";
+        String caminho_entrada=null;
 
         // get the args value
         if (args.length != 0) {

@@ -8,6 +8,13 @@ Tarefa relativa ao laboratório de "Mundo de Wumpus"
 
 - [Link para o repositório](https://github.com/GabrielTomonari/DPOO)
 
+## Arquivos Java do Jogo
+Para acionar o jogo, use o comando 
+```
+java AppMundoWumpus <caminho-do-arquivo-csv>
+```
+- [Link para os arquivos .java](https://github.com/GabrielTomonari/DPOO/tree/master/lab06/src/lab06)
+
 ## Destaques da Arquitetura
 
 ```java
