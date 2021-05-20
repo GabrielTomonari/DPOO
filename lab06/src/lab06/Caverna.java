@@ -97,26 +97,12 @@ public class Caverna {
         Wumpus wumpus = (Wumpus) salaAlvo.buscarComponente(Componente.Tipos.WUMPUS);
         salaAlvo.removerComponente(wumpus);
 
-        Posicao posCima = new Posicao(posicao.linha - 1, posicao.coluna);
-        if (posicaoEmCaverna(posCima)) {
-            removerFedor(posCima);
+        Posicao[] posFedores = wumpus.pegarPosAdjacentes();
+        for (Posicao posFedor : posFedores) {
+            if (posicaoEmCaverna(posFedor)) {
+                removerFedor(posFedor);
+            }
         }
-
-        Posicao posBaixo = new Posicao(posicao.linha + 1, posicao.coluna);
-        if (posicaoEmCaverna(posBaixo)) {
-            removerFedor(posBaixo);
-        }
-
-        Posicao posDireita = new Posicao(posicao.linha, posicao.coluna + 1);
-        if (posicaoEmCaverna(posDireita)) {
-            removerFedor(posDireita);
-        }
-
-        Posicao posEsquerda = new Posicao(posicao.linha, posicao.coluna - 1);
-        if (posicaoEmCaverna(posEsquerda)) {
-            removerFedor(posEsquerda);
-        }
-
     }
 
 }

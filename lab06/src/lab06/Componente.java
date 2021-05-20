@@ -7,6 +7,10 @@ public abstract class Componente {
         BURACO, HEROI, OURO, WUMPUS, BRISA, FEDOR, VAZIA
     }
 
+    Tipos tipo;
+    Posicao pos;
+    Caverna cave;
+
     static int pegarPrioridade(Componente componente) {
         switch (componente.tipo) {
             case BURACO:
@@ -23,10 +27,6 @@ public abstract class Componente {
                 return 0;
         }
     }
-
-    Tipos tipo;
-    Posicao pos;
-    Caverna cave;
 
     Componente(Tipos tipo, Posicao pos, Caverna cave) {
         this.tipo = tipo;
