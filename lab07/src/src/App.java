@@ -1,5 +1,7 @@
+import HeroManager.FakeHeroManager;
 import HeroManager.PrintableHeroStatus;
 import HeroManager.iHeroManager;
+import RoomManager.FakeRoomManager;
 import RoomManager.PrintableRoomState;
 import RoomManager.iRoomManager;
 import UIManager.UIManager;
@@ -18,9 +20,9 @@ public class App extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        iRoomManager room;
+        iRoomManager room = new FakeRoomManager();
         iUIManager userInterface = new UIManager();
-        iHeroManager hero;
+        iHeroManager hero = new FakeHeroManager();
 
         room.generateNewRoom();
         hero.placeHero();
