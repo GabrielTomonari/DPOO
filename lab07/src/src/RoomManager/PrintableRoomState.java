@@ -1,3 +1,5 @@
+package RoomManager;
+
 /**
  * PrintableRoomState
  */
@@ -6,24 +8,24 @@ public class PrintableRoomState {
     private int lineCounter;
     private int columnCounter;
 
-    public appendImage() {
-        
+    public void appendImage() {
+
     }
 
-    public resetCounter() {
+    public void resetCounter() {
         this.lineCounter = 0;
         this.columnCounter = 0;
     }
 
-    public getImage(){
+    public String getImage() {
         return images[lineCounter][columnCounter];
     }
 
-    public nextImage(){
-        if(this.columnCounter > 15){
+    public void nextImage() {
+        if (this.columnCounter > 15) {
             this.columnCounter = 0;
             if (this.lineCounter < 15) {
-                this.lineCounter ++;
+                this.lineCounter++;
             }
         }
     }

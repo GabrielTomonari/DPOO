@@ -1,3 +1,9 @@
+import HeroManager.PrintableHeroStatus;
+import HeroManager.iHeroManager;
+import RoomManager.PrintableRoomState;
+import RoomManager.iRoomManager;
+import UIManager.iUIManager;
+
 /**
  ** App
  */
@@ -8,12 +14,12 @@ public class App {
         iUIManager userInterface;
         iHeroManager hero;
 
-        room.generateRoomNewRoom();
+        room.generateNewRoom();
         hero.placeHero();
-        while(hero.isAlive()){
-            PrintableRoomState roomState = room.exportPrintableState();
-            PrintableHeroStatus heroStatus = hero.exportPrintableStatus();
-            userInterface.renderState(roomState, heroStatus);
+        while (hero.isAlive()) {
+            PrintableRoomState roomState = room.expPrintableRoomState();
+            PrintableHeroStatus heroStatus = hero.expPrintableHeroStatus();
+            userInterface.renderState(heroStatus, roomState);
         }
     }
 }

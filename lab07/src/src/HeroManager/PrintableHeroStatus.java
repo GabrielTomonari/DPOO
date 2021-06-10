@@ -1,5 +1,10 @@
+package HeroManager;
+
+import Utils.Direction;
+import Utils.Position;
+
 /**
- * PrintableHeroStatus
+ * Object Value representin Hero Status
  */
 public class PrintableHeroStatus {
     private Position position;
