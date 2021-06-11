@@ -6,6 +6,13 @@
   "configurations": [
     {
       "type": "java",
+      "name": "Launch AnimationTimerSample",
+      "request": "launch",
+      "mainClass": "UIManager.AnimationTimerSample",
+      "projectName": "lab07_681aa9cb"
+    },
+    {
+      "type": "java",
       "name": "Launch Current File",
       "request": "launch",
       "mainClass": "${file}"
