@@ -5,5 +5,10 @@ import RoomManager.PrintableRoomState;
 import javafx.stage.Stage;
 
 public interface iUIManager {
-    public void renderState(PrintableHeroStatus heroStatus, PrintableRoomState roomState, Stage primaryStage);
+
+    public void updateState(PrintableHeroStatus heroStatus, PrintableRoomState roomState);
+
+    public void setStage(Stage stage);
+
+    public void render();
 }

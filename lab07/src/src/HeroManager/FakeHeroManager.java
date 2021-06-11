@@ -5,7 +5,7 @@ public class FakeHeroManager implements iHeroManager {
     @Override
     public boolean isAlive() {
         // TODO Auto-generated method stub
-        return false;
+        return true;
     }
 
     @Override

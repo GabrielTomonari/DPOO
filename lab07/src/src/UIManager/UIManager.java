@@ -10,24 +10,35 @@ import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
 public class UIManager implements iUIManager {
+    // screen constants
+    private double screenWidth = 500;
+    private double screenHeigth = 500;
+    private String screenTitle = "Hello from JavaFX!";
+
+    // JavaFX Stages and Scene
+    private Stage primaryStage;
+    private Scene currentScene;
 
     @Override
-    public void renderState(PrintableHeroStatus heroStatus, PrintableRoomState roomState, Stage primaryStage) {
-        primaryStage.setTitle("Hello from JavaFX!");
-        Button button = new Button("Clique Aqui");
-        button.setOnAction(new EventHandler<ActionEvent>() {
-
-            @Override
-            public void handle(ActionEvent arg0) {
-                System.out.println("Aopaaaaa");
-            }
-
-        });
-
+    public void updateState(PrintableHeroStatus heroStatus, PrintableRoomState roomState) {
         StackPane root = new StackPane();
-        root.getChildren().addAll(button);
-        primaryStage.setScene(new Scene(root, 300, 255));
+        this.currentScene = new Scene(root, this.screenWidth, this.screenHeigth);
+    }
+
+    @Override
+    public void setStage(Stage stage) {
+        this.primaryStage = stage;
+        this.initialConfigure();
+    }
+
+    @Override
+    public void render() {
+        primaryStage.setScene(this.currentScene);
         primaryStage.show();
+    }
+
+    private void initialConfigure() {
+        primaryStage.setTitle(this.screenTitle);
     }
 
 }
