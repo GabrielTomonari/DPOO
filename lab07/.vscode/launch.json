@@ -23,7 +23,7 @@
       "request": "launch",
       "mainClass": "App",
       "projectName": "lab07_681aa9cb",
-      "vmArgs": "--module-path /home/antonio/Programação/Java/packages/openjfx-11.0.2_linux-x64_bin-sdk/javafx-sdk-11.0.2/lib --add-modules javafx.controls,javafx.fxml"
+      "vmArgs": "--module-path c:/src/javafx-sdk-11.0.2/lib --add-modules javafx.controls,javafx.fxml"
     }
   ]
 }
