@@ -1,9 +1,8 @@
+import BoardManager.PrintableBoardState;
+import BoardManager.iBoardStateManager;
 import HeroManager.FakeHeroManager;
 import HeroManager.PrintableHeroStatus;
 import HeroManager.iHeroManager;
-import RoomManager.FakeRoomManager;
-import RoomManager.PrintableRoomState;
-import RoomManager.iRoomManager;
 import UIManager.GameTimer;
 import UIManager.UIManager;
 import UIManager.iUIManager;
@@ -14,7 +13,7 @@ import javafx.stage.Stage;
  ** App
  */
 public class App extends Application {
-    iRoomManager room = new FakeRoomManager();
+    iBoardStateManager room;
     iUIManager userInterface = new UIManager();
     iHeroManager hero = new FakeHeroManager();
 
@@ -24,7 +23,7 @@ public class App extends Application {
 
     private void setUp(Stage primaryStage) {
         // GameLogic SetUp
-        this.room.generateNewRoom();
+        this.room.generateNewBoard();
         this.hero.placeHero();
         this.userInterface.setStage(primaryStage);
     }
@@ -32,7 +31,7 @@ public class App extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         this.setUp(primaryStage);
-        PrintableRoomState roomState = this.room.expPrintableRoomState();
+        PrintableBoardState roomState = this.room.expPrintableBoardState();
         PrintableHeroStatus heroStatus = this.hero.expPrintableHeroStatus();
         userInterface.updateState(heroStatus, roomState);
     }

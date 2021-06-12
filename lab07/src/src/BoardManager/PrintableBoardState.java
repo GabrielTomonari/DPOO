@@ -1,23 +1,22 @@
-package RoomManager;
+package BoardManager;
 
 /**
- * PrintableRoomState
+ * PrintableBoardState
  */
-public class PrintableRoomState {
+public class PrintableBoardState {
     private int columnMax = 16;
     private int lineMax = 16;
-
     private String[][] images;
     private int lineCounter;
     private int columnCounter;
     private boolean hasFinished;
 
-    public PrintableRoomState() {
+    public PrintableBoardState() {
         this.images = new String[lineMax][columnMax];
     }
 
-    public void appendImage(int line, int column, String image) {
-        this.images[line][column] = image;
+    public void appendImage(int i, int j, String path) {
+        this.images[i][j] = path;
     }
 
     public void resetCounter() {
