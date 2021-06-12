@@ -1,5 +1,8 @@
 package HeroManager;
 
+import Utils.Direction;
+import Utils.Position;
+
 public class FakeHeroManager implements iHeroManager {
 
     @Override
@@ -10,8 +13,11 @@ public class FakeHeroManager implements iHeroManager {
 
     @Override
     public PrintableHeroStatus expPrintableHeroStatus() {
-        // TODO Auto-generated method stub
-        return null;
+        PrintableHeroStatus heroStatus = new PrintableHeroStatus();
+        heroStatus.position = new Position(15, 0);
+        heroStatus.facingDirection = Direction.Down;
+
+        return heroStatus;
     }
 
     @Override
