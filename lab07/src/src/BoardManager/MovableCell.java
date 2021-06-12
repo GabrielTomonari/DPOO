@@ -18,8 +18,7 @@ public class MovableCell implements iCell {
 
     @Override
     public String getCellImage() {
-        // TODO Auto-generated method stub
-        return null;
+        return this.imagePath;
     }
 
 }
