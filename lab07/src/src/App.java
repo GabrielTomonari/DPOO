@@ -17,7 +17,6 @@ public class App extends Application {
     iRoomManager room = new FakeRoomManager();
     iUIManager userInterface = new UIManager();
     iHeroManager hero = new FakeHeroManager();
-    GameTimer timer = new GameTimer();
 
     public static void main(String[] args) throws Exception {
         launch(args);
@@ -28,10 +27,6 @@ public class App extends Application {
         this.room.generateNewRoom();
         this.hero.placeHero();
         this.userInterface.setStage(primaryStage);
-
-        // conect the ui with timer so it render on every new frame
-        this.timer.connect(userInterface);
-        this.timer.start();
     }
 
     @Override
