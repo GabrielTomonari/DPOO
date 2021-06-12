@@ -1,10 +1,10 @@
 package BoardManager;
 
-public class BoardStateManager implements iBoardStateManager{
+public class BoardStateManager implements iBoardStateManager {
     iCell cells[][];
     iBoardGenerator boardGenerator;
 
-    BoardStateManager(){
+    public BoardStateManager() {
         boardGenerator = new BoardGenerator();
         this.cells = boardGenerator.generateNewBoard();
     }
@@ -18,7 +18,7 @@ public class BoardStateManager implements iBoardStateManager{
     @Override
     public void notifyNewBoard() {
         // TODO Auto-generated method stub
-        
+
     }
 
     @Override
@@ -26,11 +26,10 @@ public class BoardStateManager implements iBoardStateManager{
         PrintableBoardState printableState = new PrintableBoardState();
         for (int i = 0; i < 16; i++) {
             for (int j = 0; j < 16; j++) {
-                printableState.appendImage(i,j,this.cells[i][j].getCellImage());
+                printableState.appendImage(i, j, this.cells[i][j].getCellImage());
             }
         }
         return printableState;
     }
-
 
 }

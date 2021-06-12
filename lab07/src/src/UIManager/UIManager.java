@@ -1,7 +1,7 @@
 package UIManager;
 
+import BoardManager.PrintableBoardState;
 import HeroManager.PrintableHeroStatus;
-import RoomManager.PrintableRoomState;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
@@ -25,7 +25,7 @@ public class UIManager implements iUIManager {
     private Group bgRoot;
 
     @Override
-    public void updateState(PrintableHeroStatus heroStatus, PrintableRoomState roomState) {
+    public void updateState(PrintableHeroStatus heroStatus, PrintableBoardState roomState) {
         this.clearScreen();
         ImageView heroView = getHeroView(heroStatus);
         ImageView[] roomElements = getRoomElements(roomState);
@@ -89,7 +89,7 @@ public class UIManager implements iUIManager {
     }
 
     // TODO: maybe become class?
-    private ImageView[] getRoomElements(PrintableRoomState roomState) {
+    private ImageView[] getRoomElements(PrintableBoardState roomState) {
         ImageView[] elements = new ImageView[this.cellsInColumn * this.cellsInLine];
 
         roomState.resetCounter();
