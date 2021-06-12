@@ -1,6 +1,6 @@
-package RoomManager;
+package BoardManager;
 
-public interface iRoomManager {
+public interface iBoardManager {
 
     void generateNewRoom();
 

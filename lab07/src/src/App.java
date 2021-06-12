@@ -1,7 +1,7 @@
 import HeroManager.PrintableHeroStatus;
 import HeroManager.iHeroManager;
-import RoomManager.PrintableRoomState;
-import RoomManager.iRoomManager;
+import BoardManager.PrintableRoomState;
+import BoardManager.iBoardManager;
 import UIManager.iUIManager;
 
 /**
@@ -10,7 +10,7 @@ import UIManager.iUIManager;
 public class App {
 
     public static void main(String[] args) {
-        iRoomManager room;
+        iBoardManager room;
         iUIManager userInterface;
         iHeroManager hero;
 

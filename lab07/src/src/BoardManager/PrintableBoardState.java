@@ -1,4 +1,4 @@
-package RoomManager;
+package BoardManager;
 
 /**
  * PrintableRoomState
