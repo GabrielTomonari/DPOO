@@ -2,6 +2,6 @@ package BoardManager;
 
 public interface iBoardGenerator {
     
-    public void generateNewBoard();
+    public iCell[][] generateNewBoard();
     public void notifyNewBoard();
 }

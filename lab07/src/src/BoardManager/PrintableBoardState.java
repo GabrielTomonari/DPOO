@@ -8,8 +8,8 @@ public class PrintableBoardState {
     private int lineCounter;
     private int columnCounter;
 
-    public void appendImage() {
-
+    public void appendImage(int i, int j, String path) {
+        this.images[i][j] = path;
     }
 
     public void resetCounter() {
