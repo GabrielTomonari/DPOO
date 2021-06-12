@@ -4,5 +4,5 @@ public interface iBoardManager {
 
     void generateNewRoom();
 
-    PrintableRoomState expPrintableRoomState();
+    PrintableBoardState expPrintableRoomState();
 }

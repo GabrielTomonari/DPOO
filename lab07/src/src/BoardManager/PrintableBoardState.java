@@ -3,7 +3,7 @@ package BoardManager;
 /**
  * PrintableRoomState
  */
-public class PrintableRoomState {
+public class PrintableBoardState {
     private String[][] images;
     private int lineCounter;
     private int columnCounter;
