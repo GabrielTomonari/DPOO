@@ -22,7 +22,7 @@
       "name": "Launch App",
       "request": "launch",
       "mainClass": "App",
-      "projectName": "lab07_681aa9cb",
+      "projectName": "App.java",
       "vmArgs": "--module-path c:/src/javafx-sdk-11.0.2/lib --add-modules javafx.controls,javafx.fxml"
     }
   ]

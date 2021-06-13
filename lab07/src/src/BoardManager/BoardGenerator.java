@@ -11,7 +11,7 @@ public class BoardGenerator implements iBoardGenerator{
             for (int j = 0; j < 16; j++) {
                 int randomNum = ThreadLocalRandom.current().nextInt(0, 101);
                 int randomIndex = 0;
-                if (randomNum > 66) {
+                if (randomNum > 50) {
                     randomIndex = ThreadLocalRandom.current().nextInt(1, 5);
                 }
                 String path = "file:assets/img/movableCell/movableCell"+randomIndex+".png";
