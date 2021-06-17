@@ -4,13 +4,14 @@ import Utils.Direction;
 import Utils.Position;
 
 /**
- * Object Value representin Hero Status
+ * Object Value representing Hero Status
  */
 public class PrintableHeroStatus {
     public Position position;
     public Direction facingDirection;
-    public int hp;
+    public int currentHP;
+    public int maxHP;
     public int xp;
-    public int hunger;
+    public int energy;
     public int food;
 }

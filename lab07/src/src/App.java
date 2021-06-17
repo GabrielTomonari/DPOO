@@ -2,6 +2,7 @@ import BoardManager.PrintableBoardState;
 import BoardManager.iBoardStateManager;
 import BoardManager.BoardStateManager;
 import HeroManager.FakeHeroManager;
+import HeroManager.HeroManager;
 import HeroManager.PrintableHeroStatus;
 import HeroManager.iHeroManager;
 import UIManager.UIManager;
@@ -15,7 +16,7 @@ import javafx.stage.Stage;
 public class App extends Application {
     iBoardStateManager room = new BoardStateManager();
     iUIManager userInterface = new UIManager();
-    iHeroManager hero = new FakeHeroManager();
+    iHeroManager hero = new HeroManager();
 
     public static void main(String[] args) throws Exception {
         launch(args);
