@@ -1,7 +1,9 @@
 package UIManager;
 
 import BoardManager.PrintableBoardState;
+import BoardManager.iBoardStateManager;
 import HeroManager.PrintableHeroStatus;
+import HeroManager.iHeroManager;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
@@ -18,6 +20,10 @@ public class UIManager implements iUIManager {
     private double cellWidth = this.cellHeigth;
     private String screenTitle = "POOtencial Evolutivo - by DPOO";
 
+    // GameLogic Stuffs
+    private iBoardStateManager board;
+    private iHeroManager hero;
+
     // JavaFX Stuffs
     private GameTimer timer;
     private Stage primaryStage;
@@ -25,10 +31,12 @@ public class UIManager implements iUIManager {
     private Group bgRoot;
 
     @Override
-    public void updateState(PrintableHeroStatus heroStatus, PrintableBoardState roomState) {
+    public void updateState() {
         this.clearScreen();
+        PrintableHeroStatus heroStatus = this.hero.expPrintableHeroStatus();
+        PrintableBoardState boardState = this.board.exportPrintableBoardState();
         ImageView heroView = getHeroView(heroStatus);
-        ImageView[] roomElements = getRoomElements(roomState);
+        ImageView[] roomElements = getRoomElements(boardState);
         this.bgRoot.getChildren().addAll(roomElements);
         this.bgRoot.getChildren().add(heroView);
     }
@@ -49,6 +57,8 @@ public class UIManager implements iUIManager {
         this.bgRoot.getChildren().clear();
         ImageView bgView = this.getBackGroundView();
         this.bgRoot.getChildren().add(bgView);
+        ImageView sidebarView = this.getSideBarView();
+        this.bgRoot.getChildren().add(sidebarView);
     }
 
     private void initialConfigure() {
@@ -63,6 +73,15 @@ public class UIManager implements iUIManager {
         this.timer = new GameTimer();
         this.timer.connect(this);
         this.timer.start();
+    }
+
+    private ImageView getSideBarView() {
+        Image sidebarBG = new Image("file:assets/img/Sidebar.png");
+        ImageView sidebarView = new ImageView(sidebarBG);
+        sidebarView.setX(728);
+        sidebarView.setY(0);
+
+        return sidebarView;
     }
 
     // TODO: maybe become class?
@@ -107,5 +126,16 @@ public class UIManager implements iUIManager {
         }
 
         return elements;
+    }
+
+    @Override
+    public void connectHero(iHeroManager hero) {
+        this.hero = hero;
+
+    }
+
+    @Override
+    public void connectBoard(iBoardStateManager board) {
+        this.board = board;
     }
 }

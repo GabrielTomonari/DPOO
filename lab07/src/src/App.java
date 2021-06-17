@@ -26,14 +26,14 @@ public class App extends Application {
         this.room.generateNewBoard();
         this.hero.placeHero();
         this.userInterface.setStage(primaryStage);
+        this.userInterface.connectBoard(this.room);
+        this.userInterface.connectHero(this.hero);
     }
 
     @Override
     public void start(Stage primaryStage) throws Exception {
         this.setUp(primaryStage);
-        PrintableBoardState roomState = this.room.exportPrintableBoardState();
-        PrintableHeroStatus heroStatus = this.hero.expPrintableHeroStatus();
-        userInterface.updateState(heroStatus, roomState);
+        userInterface.updateState();
     }
 
 }
