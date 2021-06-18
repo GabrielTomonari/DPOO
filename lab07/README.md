@@ -43,94 +43,175 @@ Este é o diagrama compondo componentes para análise:
 
 Para cada componente será apresentado uma descrição detalhada a seguir:
 
+## Componente `BoardManager`
+
+> Componente responsável por gerenciar o estado do Tabuleiro, o estado é uma matriz onde cada célula guarda as informações a serem renderizadas na tela, além disso cada celula guarda as informações de interação do jogo. O componente expõem métodos para interagir com as células, bem como exportar seus estado numa versão simplicada para renderização.
+
+![Componente](assets\previa\img\componente_roomstatemanager.jpg)
+
+**Ficha Técnica**
+item | detalhamento
+----- | -----
+Classe | `lab07.src.src.BoardManager`
+Autores | `Antonio D Lucas Junior` <br> `Gabriel Eiji M. de M. Tomonari`
+Interfaces | `iBoardStateManager` <br> `iBoardView` <br> `iBoardGenerator`
+
+### Interfaces
+
+Interfaces associadas a esse componente:
+
+![Diagrama Interfaces]()
+
+Interface agregadora do componente em Java:
+
+```java
+public interface iBoardStateManager extends iBoardGenerator, iBoardView {
+
+}
+```
+
+## Detalhamento das Interfaces
+
+### Interface `iBoardGenerator`
+
+`Interface que representa classes que gerenciam criação de novos tabuleiros`.
+
+```java
+public interface iBoardGenerator {
+
+    public iCell[][] generateNewBoard();
+    public void notifyNewBoard();
+}
+```
+
+| Método             | Objetivo                                                                                                                      |
+| ------------------ | ----------------------------------------------------------------------------------------------------------------------------- |
+| `generateNewBoard` | `gera um novo estado para o tabuleiro, utilizado para gerar novas fases`                                                      |
+| `notifyNewBoard`   | `notifica ouvintes sobre geração de um novo tabuleiro, utilizada para reposicionar heroi e para possíveis animações com a UI` |
+
+### Interface `iBoardView`
+
+`Interface que provida por classe que exportam uma versão do componente para impressão`.
+
+```java
+public interface iBoardView {
+    public PrintableBoardState exportPrintableBoardState();
+}
+```
+
+| Método                      | Objetivo                                                       |
+| --------------------------- | -------------------------------------------------------------- |
+| `exportPrintableBoardState` | `retorna um estado do tabuleiro simplificado para a impressão` |
+
+## Componente `UIManager`
+
+> Componente responsável por gerenciar o sistema de renderização das informações na Interface de Usuário. Suas responsabilidades envolvem, controle de clock, controle de scenas e renderização de imagens.
+
+![Componente](assets\previa\img\componente_uimanager.jpg)
+
+**Ficha Técnica**
+item | detalhamento
+----- | -----
+Classe | `lab07.src.src.UIManager`
+Autores | `Antonio D Lucas Junior` <br> `Gabriel Eiji M. de M. Tomonari`
+Interfaces | `iUIManager` <br> `iHeroManConsumer` <br> `iBoardManConsumer`
+
+### Interfaces
+
+Interfaces associadas a esse componente:
+
+![Diagrama Interfaces]()
+
+Interface agregadora do componente em Java:
+
+```java
+public interface iUIManager extends iHeroManConsumer, iBoardManConsumer {
+
+    public void updateState();
+
+    public void setStage(Stage stage);
+
+    public void render();
+}
+```
+
+## Detalhamento das Interfaces
+
+### Interface `iUIManager`
+
+`Interface principal que expõem os métodos para os demais componentes`.
+
+```java
+public interface iUIManager {
+    public void updateState();
+
+    public void setStage(Stage stage);
+
+    public void render();
+}
+```
+
+| Método        | Objetivo                                                                                                                                                                                        |
+| ------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `updateState` | `Atualiza o estado da tela, renderizando uma nova cena para o usuário`                                                                                                                          |
+| `setStage`    | `seta o stage inicial do JAVAFX, necessário para a utilização do framework, o stage representa a janela exibida para o usuário. Além disso realiza configurações da tela como tamanho e título` |
+| `render`      | `renderiza o estado atual na interface para o usuario, chamada a cada pulso de clock`                                                                                                           |
+
 ## Componente `HeroManager`
 
 > Componente responsável por gerenciar o estado do Herói, bem como fornecer metódos e funções para alterar tais estados.
 
-![Componente]()
+![Componente](assets\previa\img\componente_heromanager.jpg)
 
 **Ficha Técnica**
 item | detalhamento
 ----- | -----
 Classe | `lab07.src.src.HeroManager`
 Autores | `Antonio D Lucas Junior` <br> `Gabriel Eiji M. de M. Tomonari`
-Interfaces | ``
+Interfaces | `iHeroManager`
 
 ### Interfaces
 
 Interfaces associadas a esse componente:
 
-![Diagrama Interfaces](diagrama-interfaces.png)
+![Diagrama Interfaces]()
 
 Interface agregadora do componente em Java:
 
 ```java
-public interface IDataSet extends ITableProducer, IDataSetProperties {
+public interface iHeroManager {
+
+    public boolean isAlive();
+
+    public PrintableHeroStatus expPrintableHeroStatus();
+
+    public void placeHero();
 }
 ```
 
 ## Detalhamento das Interfaces
 
-### Interface `<nome da interface>`
+### Interface `iHeroManager`
 
-`<Resumo do papel da interface.>`
-
-```
-<Interface em Java.>
-```
-
-| Método                   | Objetivo                                          |
-| ------------------------ | ------------------------------------------------- |
-| `<id do método em Java>` | `<objetivo do método e descrição dos parâmetros>` |
-
-## Exemplo:
-
-### Interface `ITableProducer`
-
-Interface provida por qualquer fonte de dados que os forneça na forma de uma tabela.
+`Interface principal que expõem os métodos para os demais componentes`.
 
 ```java
-public interface ITableProducer {
-  String[] requestAttributes();
-  String[][] requestInstances();
+public interface iHeroManager {
+
+    public boolean isAlive();
+
+    public PrintableHeroStatus expPrintableHeroStatus();
+
+    public void placeHero();
 }
 ```
 
-| Método              | Objetivo                                                                                                                                                                               |
-| ------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `requestAttributes` | Retorna um vetor com o nome de todos os atributos (colunas) da tabela.                                                                                                                 |
-| `requestInstances`  | Retorna uma matriz em que cada linha representa uma instância e cada coluna o valor do respectivo atributo (a ordem dos atributos é a mesma daquela fornecida por `requestAttributes`. |
-
-### Interface `IDataSetProperties`
-
-Define o recurso (usualmente o caminho para um arquivo em disco) que é a fonte de dados.
-
-```java
-public interface IDataSetProperties {
-  public String getDataSource();
-  public void setDataSource(String dataSource);
-}
-```
-
-| Método          | Objetivo                                                                         |
-| --------------- | -------------------------------------------------------------------------------- |
-| `getDataSource` | Retorna o caminho da fonte de dados.                                             |
-| `setDataSource` | Define o caminho da fonte de dados, informado através do parâmetro `dataSource`. |
+| Método                   | Objetivo                                                                               |
+| ------------------------ | -------------------------------------------------------------------------------------- |
+| `isAlive`                | `informa se a vida do heroi é maior que zero, usada para continuar o loop do jogo`     |
+| `expPrintableHeroStatus` | `retorna uma versão do estado do heroi, facilitada para a impressão`                   |
+| `placeHero`              | `altera a posição do herói para a posição inicial da sala, por hora setada como (0,0)` |
 
 # Plano de Exceções
 
-## Diagrama da hierarquia de exceções
-
-`<Elabore um diagrama com a hierarquia de exceções como detalhado abaixo>`
-
-![Hierarquia Exceções](exception-hierarchy.png)
-
-## Descrição das classes de exceção
-
-`<Monte uma tabela descritiva seguindo o exemplo>:`
-
-| Classe            | Descrição                                          |
-| ----------------- | -------------------------------------------------- |
-| DivisaoInvalida   | Engloba todas as exceções de divisões não aceitas. |
-| DivisaoInutil     | Indica que a divisão por 1 é inútil.               |
-| DivisaoNaoInteira | Indica uma divisão não inteira.                    |
+## (Ainda não implementado)
