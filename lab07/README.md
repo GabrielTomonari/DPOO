@@ -31,7 +31,7 @@
 
 ## Diagrama Geral do Projeto
 
-![Diagrama](assets\previa\img\diagrama_fluxo.jpg)
+![Diagrama](assets/previa/img/diagrama_fluxo.png)
 
 > Acima o diagrama geral do projeto, considerando componentes principais, interfaces e o fluxo de dados entre eles.
 
@@ -39,7 +39,7 @@
 
 Este é o diagrama compondo componentes para análise:
 
-![Diagrama](assets\previa\img\diagrama.jpg)
+![Diagrama](assets/previa/img/diagrama.jpg)
 
 Para cada componente será apresentado uma descrição detalhada a seguir:
 
@@ -47,7 +47,7 @@ Para cada componente será apresentado uma descrição detalhada a seguir:
 
 > Componente responsável por gerenciar o estado do Tabuleiro, o estado é uma matriz onde cada célula guarda as informações a serem renderizadas na tela, além disso cada célula guarda as informações de interação do jogo. O componente expõem métodos para interagir com as células, bem como exportar seus estado numa versão simplicada para renderização.
 
-![Componente](assets\previa\img\componente_roomstatemanager.jpg)
+![Componente](assets/previa/img/componente_roomstatemanager.jpg)
 
 **Ficha Técnica**
 item | detalhamento
@@ -60,7 +60,7 @@ Interfaces | `iBoardStateManager` <br> `iBoardView` <br> `iBoardGenerator`
 
 Interfaces associadas a esse componente:
 
-![Diagrama Interfaces](assets\previa\img\boardinterface.png)
+![Diagrama Interfaces](assets/previa/img/diagrama_fluxo.png)
 
 Interface agregadora do componente em Java:
 
@@ -107,7 +107,7 @@ public interface iBoardView {
 
 > Componente responsável por gerenciar o sistema de renderização das informações na Interface de Usuário. Suas responsabilidades envolvem, controle de clock, controle de scenas e renderização de imagens.
 
-![Componente](assets\previa\img\componente_uimanager.jpg)
+![Componente](assets/previa/img/componente_uimanager.jpg)
 
 **Ficha Técnica**
 item | detalhamento
@@ -120,7 +120,7 @@ Interfaces | `iUIManager` <br> `iHeroManConsumer` <br> `iBoardManConsumer`
 
 Interfaces associadas a esse componente:
 
-![Diagrama Interfaces](assets\previa\img\uiinterface.png)
+![Diagrama Interfaces](assets/previa/img/uiinterface.png)
 
 Interface agregadora do componente em Java:
 
@@ -189,7 +189,7 @@ public interface iHeroManConsumer {
 
 > Componente responsável por gerenciar o estado do Herói, bem como fornecer metódos e funções para alterar tais estados.
 
-![Componente](assets\previa\img\componente_heromanager.jpg)
+![Componente](assets/previa/img/herointerface.png)
 
 **Ficha Técnica**
 item | detalhamento
@@ -202,7 +202,7 @@ Interfaces | `iHeroManager`
 
 Interfaces associadas a esse componente:
 
-![Diagrama Interfaces](assets\previa\img\herointerface.png)
+![Diagrama Interfaces](assets/previa/img/herointerface.png)
 
 Interface agregadora do componente em Java:
 
