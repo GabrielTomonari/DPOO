@@ -244,7 +244,7 @@ public interface iHeroManager {
 
 > Componente responsável por gerenciar a lógica de combate do jogo, comunica-se com a UI para gerar um interface de combate e com o heroi para atualizar o status durante e após o combate.
 
-![Componente](assets\previa\img\componente_combatmanager.jpg)
+![Componente](assets/previa/img/componente_combatmanager.jpg)
 
 **Ficha Técnica**
 item | detalhamento
