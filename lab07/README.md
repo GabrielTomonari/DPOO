@@ -60,7 +60,7 @@ Interfaces | `iBoardStateManager` <br> `iBoardView` <br> `iBoardGenerator`
 
 Interfaces associadas a esse componente:
 
-![Diagrama Interfaces]()
+![Diagrama Interfaces](assets/previa/img/diagrama_fluxo.png)
 
 Interface agregadora do componente em Java:
 
@@ -120,7 +120,7 @@ Interfaces | `iUIManager` <br> `iHeroManConsumer` <br> `iBoardManConsumer`
 
 Interfaces associadas a esse componente:
 
-![Diagrama Interfaces]()
+![Diagrama Interfaces](assets/previa/img/componente_uimanager.jpg)
 
 Interface agregadora do componente em Java:
 
@@ -174,7 +174,7 @@ Interfaces | `iHeroManager`
 
 Interfaces associadas a esse componente:
 
-![Diagrama Interfaces]()
+![Diagrama Interfaces](assets/previa/img/componente_heromanager.jpg)
 
 Interface agregadora do componente em Java:
 
