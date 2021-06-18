@@ -31,7 +31,7 @@
 
 ## Diagrama Geral do Projeto
 
-![Diagrama]()
+![Diagrama](assets\previa\img\diagrama_fluxo.jpg)
 
 > Acima o diagrama geral do projeto, considerando componentes principais, interfaces e o fluxo de dados entre eles.
 
