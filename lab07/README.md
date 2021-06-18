@@ -60,7 +60,7 @@ Interfaces | `iBoardStateManager` <br> `iBoardView` <br> `iBoardGenerator`
 
 Interfaces associadas a esse componente:
 
-![Diagrama Interfaces]()
+![Diagrama Interfaces](assets\previa\img\boardinterface.png)
 
 Interface agregadora do componente em Java:
 
@@ -120,7 +120,7 @@ Interfaces | `iUIManager` <br> `iHeroManConsumer` <br> `iBoardManConsumer`
 
 Interfaces associadas a esse componente:
 
-![Diagrama Interfaces]()
+![Diagrama Interfaces](assets\previa\img\uiinterface.png)
 
 Interface agregadora do componente em Java:
 
@@ -157,6 +157,34 @@ public interface iUIManager {
 | `setStage`    | `seta o stage inicial do JAVAFX, necessário para a utilização do framework, o stage representa a janela exibida para o usuário. Além disso realiza configurações da tela como tamanho e título` |
 | `render`      | `renderiza o estado atual na interface para o usuario, chamada a cada pulso de clock`                                                                                                           |
 
+### Interface `iBoardManConsumer`
+
+`Interface que representam classe que precisam estar ligadas a algum iBoardManager`.
+
+```java
+public interface iBoardManConsumer {
+    public void connectBoard(iBoardStateManager board);
+}
+```
+
+| Método         | Objetivo                                                                                |
+| -------------- | --------------------------------------------------------------------------------------- |
+| `connectBoard` | `conecta o UIMager a algum boardManager, permitindo a comunicação entre os componentes` |
+
+### Interface `iHeroManConsumer`
+
+`Interface que representam classe que precisam estar ligadas a algum iHeroManager`.
+
+```java
+public interface iHeroManConsumer {
+    public void connectHero(iHeroManager hero);
+}
+```
+
+| Método         | Objetivo                                                                                |
+| -------------- | --------------------------------------------------------------------------------------- |
+| `connectBoard` | `conecta o UIMager a algum boardManager, permitindo a comunicação entre os componentes` |
+
 ## Componente `HeroManager`
 
 > Componente responsável por gerenciar o estado do Herói, bem como fornecer metódos e funções para alterar tais estados.
@@ -174,7 +202,7 @@ Interfaces | `iHeroManager`
 
 Interfaces associadas a esse componente:
 
-![Diagrama Interfaces]()
+![Diagrama Interfaces](assets\previa\img\herointerface.png)
 
 Interface agregadora do componente em Java:
 
@@ -211,6 +239,23 @@ public interface iHeroManager {
 | `isAlive`                | `informa se a vida do heroi é maior que zero, usada para continuar o loop do jogo`     |
 | `expPrintableHeroStatus` | `retorna uma versão do estado do heroi, facilitada para a impressão`                   |
 | `placeHero`              | `altera a posição do herói para a posição inicial da sala, por hora setada como (0,0)` |
+
+## Componente `CombatManager`
+
+> Componente responsável por gerenciar a lógica de combate do jogo, comunica-se com a UI para gerar um interface de combate e com o heroi para atualizar o status durante e após o combate.
+
+![Componente](assets\previa\img\componente_combatmanager.jpg)
+
+**Ficha Técnica**
+item | detalhamento
+----- | -----
+Classe | `lab07.src.src.CombatManager`
+Autores | `Antonio D Lucas Junior` <br> `Gabriel Eiji M. de M. Tomonari`
+Interfaces | `iBoardCombatManager`
+
+### Interfaces
+
+## (Ainda não implementado)
 
 # Plano de Exceções
 
