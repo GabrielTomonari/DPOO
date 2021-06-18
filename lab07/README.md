@@ -31,44 +31,30 @@
 
 ## Diagrama Geral do Projeto
 
-![Diagrama](assets\previa\img\diagrama.jpg)
+![Diagrama]()
 
-> Acima o diagrama geral do projeto, considerando componentes principais e interfaces.
+> Acima o diagrama geral do projeto, considerando componentes principais, interfaces e o fluxo de dados entre eles.
 
 ## Diagrama Geral de Componentes
-
-### Exemplo 1
 
 Este é o diagrama compondo componentes para análise:
 
 ![Diagrama](assets\previa\img\diagrama.jpg)
 
-### Exemplo 2
+Para cada componente será apresentado uma descrição detalhada a seguir:
 
-Este é um diagrama inicial do projeto de jogos:
+## Componente `HeroManager`
 
-![Diagrama Jogos](diagrama-componentes-jogos.png)
+> Componente responsável por gerenciar o estado do Herói, bem como fornecer metódos e funções para alterar tais estados.
 
-### Exemplo 3
-
-Este é outro diagrama de um projeto de vendas:
-
-![Diagrama Vendas](diagrama-componentes-vendas.png)
-
-Para cada componente será apresentado um documento conforme o modelo a seguir:
-
-## Componente `<Nome do Componente>`
-
-> <Resumo do papel do componente e serviços que ele oferece.>
-
-![Componente](diagrama-componente.png)
+![Componente]()
 
 **Ficha Técnica**
 item | detalhamento
 ----- | -----
-Classe | `<caminho completo da classe com pacotes>` <br> Exemplo: `pt.c08componentes.s20catalog.s10ds.DataSetComponent`
-Autores | `<nome dos membros que criaram o componente>`
-Interfaces | `<listagem das interfaces do componente>`
+Classe | `lab07.src.src.HeroManager`
+Autores | `Antonio D Lucas Junior` <br> `Gabriel Eiji M. de M. Tomonari`
+Interfaces | ``
 
 ### Interfaces
 
