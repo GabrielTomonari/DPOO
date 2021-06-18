@@ -15,7 +15,7 @@
 # Vídeos do Projeto
 
 ## Vídeo da Prévia
-> [Link para o vídeo](assets/previa/video/previa.mp4)
+> [Link para o vídeo](https://youtu.be/emUyXbDuNmo)
 
 # Slides do Projeto
 
