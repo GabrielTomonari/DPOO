@@ -16,13 +16,11 @@
 # Vídeos do Projeto
 
 ## Vídeo da Prévia
-
 > [Link para o vídeo](https://youtu.be/emUyXbDuNmo)
 
 # Slides do Projeto
 
 ## Slides da Prévia
-
 [Link para slides](https://docs.google.com/presentation/d/1r2Jii_VHBkU03k71rF_9ruOg5X7HX8bxM-2oBistcn0/edit?usp=sharing)
 
 # Documentação dos Componentes
