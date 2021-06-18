@@ -60,7 +60,7 @@ Interfaces | `iBoardStateManager` <br> `iBoardView` <br> `iBoardGenerator`
 
 Interfaces associadas a esse componente:
 
-![Diagrama Interfaces](assets/previa/img/diagrama_fluxo.png)
+![Diagrama Interfaces](assets/previa/img/boardinterface.png)
 
 Interface agregadora do componente em Java:
 
