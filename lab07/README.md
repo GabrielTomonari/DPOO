@@ -31,7 +31,7 @@
 
 ## Diagrama Geral do Projeto
 
-![Diagrama](assets\previa\img\diagrama_fluxo.jpg)
+![Diagrama](assets/previa/img/diagrama_fluxo.jpg)
 
 > Acima o diagrama geral do projeto, considerando componentes principais, interfaces e o fluxo de dados entre eles.
 
@@ -39,7 +39,7 @@
 
 Este é o diagrama compondo componentes para análise:
 
-![Diagrama](assets\previa\img\diagrama.jpg)
+![Diagrama](assets/previa/img/diagrama.jpg)
 
 Para cada componente será apresentado uma descrição detalhada a seguir:
 
@@ -47,7 +47,7 @@ Para cada componente será apresentado uma descrição detalhada a seguir:
 
 > Componente responsável por gerenciar o estado do Tabuleiro, o estado é uma matriz onde cada célula guarda as informações a serem renderizadas na tela, além disso cada celula guarda as informações de interação do jogo. O componente expõem métodos para interagir com as células, bem como exportar seus estado numa versão simplicada para renderização.
 
-![Componente](assets\previa\img\componente_roomstatemanager.jpg)
+![Componente](assets/previa/img/componente_roomstatemanager.jpg)
 
 **Ficha Técnica**
 item | detalhamento
@@ -107,7 +107,7 @@ public interface iBoardView {
 
 > Componente responsável por gerenciar o sistema de renderização das informações na Interface de Usuário. Suas responsabilidades envolvem, controle de clock, controle de scenas e renderização de imagens.
 
-![Componente](assets\previa\img\componente_uimanager.jpg)
+![Componente](assets/previa/img/componente_uimanager.jpg)
 
 **Ficha Técnica**
 item | detalhamento
@@ -161,7 +161,7 @@ public interface iUIManager {
 
 > Componente responsável por gerenciar o estado do Herói, bem como fornecer metódos e funções para alterar tais estados.
 
-![Componente](assets\previa\img\componente_heromanager.jpg)
+![Componente](assets/previa/img/componente_heromanager.jpg)
 
 **Ficha Técnica**
 item | detalhamento
