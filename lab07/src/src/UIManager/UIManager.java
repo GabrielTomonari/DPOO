@@ -30,6 +30,9 @@ public class UIManager implements iUIManager {
     private Scene currentScene;
     private Group bgRoot;
 
+    // SubClasses
+    private UIController controller;
+
     @Override
     public void updateState() {
         this.clearScreen();
@@ -69,6 +72,10 @@ public class UIManager implements iUIManager {
         this.bgRoot = new Group();
         this.clearScreen();
         this.currentScene = new Scene(this.bgRoot, this.screenWidth, this.screenHeigth);
+
+        // conect the ui with the controller to receive input from user
+        this.controller = new UIController(this.currentScene);
+        this.controller.configKeyBoard();
 
         // conect the ui with timer so it render on every new frame
         this.timer = new GameTimer();
@@ -123,6 +130,7 @@ public class UIManager implements iUIManager {
     @Override
     public void connectHero(iHeroManager hero) {
         this.hero = hero;
+        this.controller.addObserver(hero);
 
     }
 

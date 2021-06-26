@@ -16,7 +16,7 @@ import javafx.stage.Stage;
 public class App extends Application {
     iBoardStateManager room = new BoardStateManager();
     iUIManager userInterface = new UIManager();
-    iHeroManager hero = new FakeHeroManager();
+    iHeroManager hero = new HeroManager();
 
     public static void main(String[] args) throws Exception {
         launch(args);

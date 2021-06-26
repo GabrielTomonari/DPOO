@@ -1,6 +1,8 @@
 package HeroManager;
 
-public interface iHeroManager {
+import UIManager.iCommandObserver;
+
+public interface iHeroManager extends iCommandObserver {
 
     public boolean isAlive();
 

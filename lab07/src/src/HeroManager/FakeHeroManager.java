@@ -1,5 +1,6 @@
 package HeroManager;
 
+import UIManager.iCommand;
 import Utils.Direction;
 import Utils.Position;
 
@@ -30,6 +31,12 @@ public class FakeHeroManager implements iHeroManager {
 
     @Override
     public void placeHero() {
+        // TODO Auto-generated method stub
+
+    }
+
+    @Override
+    public void update(iCommand command) {
         // TODO Auto-generated method stub
 
     }
