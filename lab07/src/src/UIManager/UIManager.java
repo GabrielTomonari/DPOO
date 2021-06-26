@@ -35,6 +35,9 @@ public class UIManager implements iUIManager {
         this.clearScreen();
         PrintableHeroStatus heroStatus = this.hero.expPrintableHeroStatus();
         PrintableBoardState boardState = this.board.exportPrintableBoardState();
+        SidebarRenderer sidebarRenderer = new SidebarRenderer(bgRoot, heroStatus);
+
+        sidebarRenderer.renderSidebar();
         ImageView heroView = getHeroView(heroStatus);
         ImageView[] roomElements = getRoomElements(boardState);
         this.bgRoot.getChildren().addAll(roomElements);
@@ -57,8 +60,6 @@ public class UIManager implements iUIManager {
         this.bgRoot.getChildren().clear();
         ImageView bgView = this.getBackGroundView();
         this.bgRoot.getChildren().add(bgView);
-        ImageView sidebarView = this.getSideBarView();
-        this.bgRoot.getChildren().add(sidebarView);
     }
 
     private void initialConfigure() {
@@ -73,15 +74,6 @@ public class UIManager implements iUIManager {
         this.timer = new GameTimer();
         this.timer.connect(this);
         this.timer.start();
-    }
-
-    private ImageView getSideBarView() {
-        Image sidebarBG = new Image("file:assets/img/Sidebar.png");
-        ImageView sidebarView = new ImageView(sidebarBG);
-        sidebarView.setX(728);
-        sidebarView.setY(0);
-
-        return sidebarView;
     }
 
     // TODO: maybe become class?

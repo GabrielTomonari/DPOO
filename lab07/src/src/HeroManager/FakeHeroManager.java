@@ -16,6 +16,14 @@ public class FakeHeroManager implements iHeroManager {
         PrintableHeroStatus heroStatus = new PrintableHeroStatus();
         heroStatus.position = new Position(15, 0);
         heroStatus.facingDirection = Direction.Down;
+        heroStatus.food = 10;
+        heroStatus.maxHP = 200;
+        heroStatus.currentHP = 100;
+        heroStatus.currentEnergy = 10;
+        heroStatus.maxEnergy = 15;
+        heroStatus.currentXp = 100;
+        heroStatus.maxXp = 1000;
+        heroStatus.currentLevel = 5;
 
         return heroStatus;
     }

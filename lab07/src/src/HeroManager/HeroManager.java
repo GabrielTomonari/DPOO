@@ -39,8 +39,8 @@ public class HeroManager implements iHeroManager {
         status.facingDirection = this.facingDirection;
         status.currentHP = this.currentHP;
         status.maxHP = this.maxHP;
-        status.xp = this.xp;
-        status.energy = this.energy;
+        status.currentXp = this.xp;
+        status.currentEnergy = this.energy;
         status.food = this.food;
 
         return status;
