@@ -1,5 +1,8 @@
-package BoardManager;
+package BoardManager.BoardState;
 
+import BoardManager.BoardLogic.iBoardLogicController;
+import BoardManager.Cells.ObstacleCell;
+import BoardManager.Cells.iCell;
 import Utils.Position;
 
 public class BoardStateController implements iBoardStateController {

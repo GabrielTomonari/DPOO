@@ -2,7 +2,7 @@ package UIManager;
 
 import HeroManager.iHeroManConsumer;
 import BoardManager.iBoardManConsumer;
-import BoardManager.iMoveObserver;
+import BoardManager.BoardLogic.iMoveObserver;
 import javafx.stage.Stage;
 
 public interface iUIManager extends iHeroManConsumer, iBoardManConsumer, iMoveObserver {

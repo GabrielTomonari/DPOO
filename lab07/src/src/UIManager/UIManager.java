@@ -1,7 +1,7 @@
 package UIManager;
 
-import BoardManager.PrintableBoardState;
 import BoardManager.iBoardStateManager;
+import BoardManager.BoardView.PrintableBoardState;
 import HeroManager.PrintableHeroStatus;
 import HeroManager.iHeroManager;
 import Utils.Position;

@@ -1,7 +1,9 @@
-package BoardManager;
+package BoardManager.BoardGenerator;
 
 import java.util.concurrent.ThreadLocalRandom;
 
+import BoardManager.Cells.MovableCell;
+import BoardManager.Cells.iCell;
 import Utils.Position;
 
 public class BoardGenerator implements iBoardGenerator {

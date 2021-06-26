@@ -1,4 +1,6 @@
-package BoardManager;
+package BoardManager.Cells;
+
+import BoardManager.BoardLogic.iBoardLogicController;
 
 public class ObstacleCell implements iCell {
 

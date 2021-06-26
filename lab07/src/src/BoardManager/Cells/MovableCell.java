@@ -1,5 +1,6 @@
-package BoardManager;
+package BoardManager.Cells;
 
+import BoardManager.BoardLogic.iBoardLogicController;
 import Utils.Position;
 
 /**
@@ -9,7 +10,7 @@ public class MovableCell implements iCell {
     String imagePath;
     Position position;
 
-    MovableCell(String path, Position position) {
+    public MovableCell(String path, Position position) {
         this.imagePath = path;
         this.position = position;
     }

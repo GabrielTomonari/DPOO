@@ -1,4 +1,4 @@
-package BoardManager;
+package BoardManager.BoardState;
 
 import Utils.Position;
 

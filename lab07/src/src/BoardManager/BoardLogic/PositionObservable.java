@@ -1,4 +1,4 @@
-package BoardManager;
+package BoardManager.BoardLogic;
 
 import Utils.BaseObervable;
 import Utils.Position;

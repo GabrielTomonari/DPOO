@@ -1,7 +1,14 @@
 package BoardManager;
 
+import BoardManager.BoardGenerator.BoardGenerator;
+import BoardManager.BoardGenerator.iBoardGenerator;
+import BoardManager.BoardLogic.BoardLogicController;
+import BoardManager.BoardLogic.iBoardLogicController;
+import BoardManager.BoardState.BoardStateController;
+import BoardManager.BoardState.iBoardStateController;
+import BoardManager.BoardView.PrintableBoardState;
+import BoardManager.Cells.iCell;
 import HeroManager.iHeroManager;
-import UIManager.iUIManConsumer;
 import UIManager.iUIManager;
 import Utils.Position;
 

@@ -1,4 +1,4 @@
-package BoardManager;
+package BoardManager.BoardView;
 
 /**
  * PrintableBoardState
