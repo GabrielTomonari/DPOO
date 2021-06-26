@@ -1,12 +1,14 @@
 package UIManager;
 
 import HeroManager.PrintableHeroStatus;
+import HeroManager.iHeroManConsumer;
 import BoardManager.PrintableBoardState;
+import BoardManager.iBoardManConsumer;
 import javafx.stage.Stage;
 
-public interface iUIManager {
+public interface iUIManager extends iHeroManConsumer, iBoardManConsumer {
 
-    public void updateState(PrintableHeroStatus heroStatus, PrintableBoardState roomState);
+    public void updateState();
 
     public void setStage(Stage stage);
 
