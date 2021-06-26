@@ -1,4 +1,4 @@
-package UIManager;
+package UIManager.InterfaceController;
 
 import Utils.BaseObervable;
 import Utils.Direction;

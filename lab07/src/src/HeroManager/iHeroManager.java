@@ -2,7 +2,7 @@ package HeroManager;
 
 import BoardManager.iBoardManConsumer;
 import BoardManager.BoardLogic.iMoveObserver;
-import UIManager.iDirectionObserver;
+import UIManager.InterfaceController.iDirectionObserver;
 
 public interface iHeroManager extends iDirectionObserver, iMoveObserver, iBoardManConsumer {
 

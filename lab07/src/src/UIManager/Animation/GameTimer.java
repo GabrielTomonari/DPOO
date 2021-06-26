@@ -1,5 +1,6 @@
-package UIManager;
+package UIManager.Animation;
 
+import UIManager.iUIManager;
 import javafx.animation.AnimationTimer;
 
 //main class

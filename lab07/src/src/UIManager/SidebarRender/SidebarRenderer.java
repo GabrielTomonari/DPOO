@@ -1,4 +1,4 @@
-package UIManager;
+package UIManager.SidebarRender;
 
 import HeroManager.PrintableHeroStatus;
 import javafx.scene.Group;
