@@ -1,7 +1,6 @@
 package HeroManager;
 
 import BoardManager.iBoardStateManager;
-import UIManager.iCommand;
 import Utils.Direction;
 import Utils.Position;
 
@@ -68,12 +67,22 @@ public class HeroManager implements iHeroManager {
         this.currentLevel++;
     }
 
+    public void moveHero(Position position) {
+        this.position = position;
+    }
+
     @Override
-    public void update(iCommand command) {
+    public void update(Direction command) {
         Position positionToInteract;
 
-        positionToInteract = new Position(this.position, command.getInfo());
+        positionToInteract = new Position(this.position, command);
         this.board.interactWithCellAt(positionToInteract);
+    }
+
+    @Override
+    public void update(Position positionToMove) {
+        System.out.println("Hero has received position");
+        this.moveHero(positionToMove);
     }
 
     @Override

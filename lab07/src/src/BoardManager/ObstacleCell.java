@@ -3,7 +3,7 @@ package BoardManager;
 public class ObstacleCell implements iCell {
 
     @Override
-    public void activateInteraction(iBoardController controller) {
+    public void activateInteraction(BoardController controller) {
         System.out.println("Ops can't go there");
     }
 

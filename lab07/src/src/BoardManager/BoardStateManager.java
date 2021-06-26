@@ -1,14 +1,22 @@
 package BoardManager;
 
+import HeroManager.iHeroManager;
+import UIManager.iUIManConsumer;
+import UIManager.iUIManager;
 import Utils.Position;
 
 public class BoardStateManager implements iBoardStateManager {
     iCell cells[][];
+    iUIManager ui;
+    iHeroManager hero;
     iBoardGenerator boardGenerator;
+    BoardController boardController;
 
     public BoardStateManager() {
         boardGenerator = new BoardGenerator();
         this.cells = boardGenerator.generateNewBoard();
+
+        boardController = new BoardController(this.cells);
     }
 
     @Override
@@ -36,14 +44,19 @@ public class BoardStateManager implements iBoardStateManager {
 
     @Override
     public void interactWithCellAt(Position position) {
-        try {
-            this.cells[position.line][position.column].activateInteraction(this);
-        } catch (ArrayIndexOutOfBoundsException e) {
-            ObstacleCell tempo = new ObstacleCell();
-            tempo.activateInteraction(this);
-        } catch (Exception e) {
-            throw e;
-        }
+        this.boardController.interactWithCellAt(position);
+    }
+
+    @Override
+    public void connectHero(iHeroManager hero) {
+        this.hero = hero;
+        this.boardController.addObserver(this.hero);
+    }
+
+    @Override
+    public void connectUI(iUIManager uiManager) {
+        this.ui = uiManager;
+        this.boardController.addObserver(this.ui);
     }
 
 }

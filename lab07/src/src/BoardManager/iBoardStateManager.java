@@ -1,5 +1,9 @@
 package BoardManager;
 
-public interface iBoardStateManager extends iBoardGenerator, iBoardView, iBoardController {
+import HeroManager.iHeroManConsumer;
+import UIManager.iUIManConsumer;
+
+public interface iBoardStateManager
+        extends iBoardGenerator, iBoardView, iBoardController, iHeroManConsumer, iUIManConsumer {
 
 }

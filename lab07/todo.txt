@@ -1,2 +1,4 @@
+[x] Notify when to update for performance?
+[] review board controller interfaces
 [] More types of commands?
 [] Use generics in observable?

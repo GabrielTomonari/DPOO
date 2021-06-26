@@ -1,5 +1,7 @@
 package BoardManager;
 
+import Utils.Position;
+
 /**
  * MovableCell
  */
@@ -16,9 +18,9 @@ public class MovableCell implements iCell {
     }
 
     @Override
-    public void activateInteraction(iBoardController controller) {
-        System.out.println("Interacting with a movable cell");
-
+    public void activateInteraction(BoardController controller) {
+        System.out.println("movind hero");
+        controller.notifyMovement(new Position(5, 5));
     }
 
 }

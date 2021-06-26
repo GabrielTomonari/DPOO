@@ -4,6 +4,7 @@ import BoardManager.PrintableBoardState;
 import BoardManager.iBoardStateManager;
 import HeroManager.PrintableHeroStatus;
 import HeroManager.iHeroManager;
+import Utils.Position;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
@@ -100,6 +101,7 @@ public class UIManager implements iUIManager {
         heroView.setPreserveRatio(true);
         heroView.setFitHeight(this.cellHeigth);
 
+        System.out.println("linha: " + heroStatus.position.line);
         heroView.setX(heroStatus.position.column * this.cellWidth);
         heroView.setY(heroStatus.position.line * this.cellHeigth);
 
@@ -131,11 +133,15 @@ public class UIManager implements iUIManager {
     public void connectHero(iHeroManager hero) {
         this.hero = hero;
         this.controller.addObserver(hero);
-
     }
 
     @Override
     public void connectBoard(iBoardStateManager board) {
         this.board = board;
+    }
+
+    @Override
+    public void update(Position positionToMove) {
+        this.updateState();
     }
 }

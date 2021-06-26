@@ -1,5 +1,8 @@
 package BoardManager;
 
+import HeroManager.iHeroManager;
+import UIManager.iUIManConsumer;
+import UIManager.iUIManager;
 import Utils.Position;
 
 public class FakeBoardManager implements iBoardStateManager {
@@ -32,6 +35,18 @@ public class FakeBoardManager implements iBoardStateManager {
 
     @Override
     public void interactWithCellAt(Position position) {
+        // TODO Auto-generated method stub
+
+    }
+
+    @Override
+    public void connectHero(iHeroManager hero) {
+        // TODO Auto-generated method stub
+
+    }
+
+    @Override
+    public void connectUI(iUIManager uiManager) {
         // TODO Auto-generated method stub
 
     }

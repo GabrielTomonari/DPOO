@@ -27,9 +27,11 @@ public class App extends Application {
         this.board.generateNewBoard();
         this.hero.placeHero();
         this.userInterface.setStage(primaryStage);
-        this.hero.connectBoard(this.board);
         this.userInterface.connectBoard(this.board);
         this.userInterface.connectHero(this.hero);
+        this.hero.connectBoard(this.board);
+        this.board.connectHero(this.hero);
+        this.board.connectUI(this.userInterface);
     }
 
     @Override

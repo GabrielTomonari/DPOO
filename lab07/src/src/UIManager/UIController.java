@@ -5,18 +5,17 @@ import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.input.KeyEvent;
 
-public class UIController extends CommandObservable {
+public class UIController extends DirectionObservable {
     Scene scene;
-    iCommand command;
+    Direction command;
 
     public UIController(Scene scene) {
         this.scene = scene;
-        this.command = new MoveCommand();
     }
 
     @Override
     protected void notifyCommand() {
-        for (iCommandObserver observer : observers) {
+        for (iDirectionObserver observer : observers) {
             observer.update(this.command);
         }
     }
@@ -25,22 +24,22 @@ public class UIController extends CommandObservable {
         switch (event.getCode()) {
             case W:
             case UP:
-                this.command.setDirection(Direction.Up);
+                this.command = Direction.Up;
                 notifyCommand();
                 break;
             case S:
             case DOWN:
-                this.command.setDirection(Direction.Down);
+                this.command = Direction.Down;
                 notifyCommand();
                 break;
             case LEFT:
             case A:
-                this.command.setDirection(Direction.Left);
+                this.command = Direction.Left;
                 notifyCommand();
                 break;
             case RIGHT:
             case D:
-                this.command.setDirection(Direction.Rigth);
+                this.command = Direction.Rigth;
                 notifyCommand();
                 break;
             default:
