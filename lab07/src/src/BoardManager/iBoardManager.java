@@ -6,7 +6,6 @@ import BoardManager.BoardView.iBoardView;
 import HeroManager.iHeroManConsumer;
 import UIManager.iUIManConsumer;
 
-public interface iBoardStateManager
-                extends iBoardGenerator, iBoardView, iBoardStateController, iHeroManConsumer, iUIManConsumer {
+public interface iBoardManager extends iBoardView, iBoardStateController, iHeroManConsumer, iUIManConsumer {
 
 }

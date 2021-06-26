@@ -1,5 +1,5 @@
-import BoardManager.iBoardStateManager;
-import BoardManager.BoardStateManager;
+import BoardManager.iBoardManager;
+import BoardManager.BoardManager;
 import HeroManager.HeroManager;
 import HeroManager.iHeroManager;
 import UIManager.UIManager;
@@ -11,7 +11,7 @@ import javafx.stage.Stage;
  ** App
  */
 public class App extends Application {
-    iBoardStateManager board = new BoardStateManager();
+    iBoardManager board = new BoardManager();
     iUIManager userInterface = new UIManager();
     iHeroManager hero = new HeroManager();
 
@@ -21,7 +21,6 @@ public class App extends Application {
 
     private void setUp(Stage primaryStage) {
         // GameLogic SetUp
-        this.board.generateNewBoard();
         this.hero.placeHero();
         this.userInterface.setStage(primaryStage);
         this.userInterface.connectBoard(this.board);

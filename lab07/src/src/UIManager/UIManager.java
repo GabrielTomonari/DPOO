@@ -1,6 +1,6 @@
 package UIManager;
 
-import BoardManager.iBoardStateManager;
+import BoardManager.iBoardManager;
 import BoardManager.BoardView.PrintableBoardState;
 import HeroManager.PrintableHeroStatus;
 import HeroManager.iHeroManager;
@@ -22,7 +22,7 @@ public class UIManager implements iUIManager {
     private String screenTitle = "POOtencial Evolutivo - by DPOO";
 
     // GameLogic Stuffs
-    private iBoardStateManager board;
+    private iBoardManager board;
     private iHeroManager hero;
 
     // JavaFX Stuffs
@@ -135,7 +135,7 @@ public class UIManager implements iUIManager {
     }
 
     @Override
-    public void connectBoard(iBoardStateManager board) {
+    public void connectBoard(iBoardManager board) {
         this.board = board;
     }
 

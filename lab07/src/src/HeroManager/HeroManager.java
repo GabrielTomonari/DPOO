@@ -1,6 +1,6 @@
 package HeroManager;
 
-import BoardManager.iBoardStateManager;
+import BoardManager.iBoardManager;
 import Utils.Direction;
 import Utils.Position;
 
@@ -12,7 +12,7 @@ public class HeroManager implements iHeroManager {
     private int initialMaxXp = 10;
 
     // GameLogic
-    private iBoardStateManager board;
+    private iBoardManager board;
 
     // hero Variables
     private Position position;
@@ -85,7 +85,7 @@ public class HeroManager implements iHeroManager {
     }
 
     @Override
-    public void connectBoard(iBoardStateManager board) {
+    public void connectBoard(iBoardManager board) {
         this.board = board;
     }
 

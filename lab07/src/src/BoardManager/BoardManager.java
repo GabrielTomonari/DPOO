@@ -6,50 +6,35 @@ import BoardManager.BoardLogic.BoardLogicController;
 import BoardManager.BoardLogic.iBoardLogicController;
 import BoardManager.BoardState.BoardStateController;
 import BoardManager.BoardState.iBoardStateController;
+import BoardManager.BoardView.BoardView;
 import BoardManager.BoardView.PrintableBoardState;
+import BoardManager.BoardView.iBoardView;
 import BoardManager.Cells.iCell;
 import HeroManager.iHeroManager;
 import UIManager.iUIManager;
 import Utils.Position;
 
-public class BoardStateManager implements iBoardStateManager {
+public class BoardManager implements iBoardManager {
     iCell cells[][];
     iUIManager ui;
     iHeroManager hero;
     iBoardGenerator boardGenerator;
+    iBoardView boardView;
     iBoardStateController boardState;
     iBoardLogicController boardLogic;
 
-    public BoardStateManager() {
+    public BoardManager() {
         boardGenerator = new BoardGenerator();
         this.cells = boardGenerator.generateNewBoard();
 
         boardLogic = new BoardLogicController();
         boardState = new BoardStateController(this.cells, this.boardLogic);
-
-    }
-
-    @Override
-    public iCell[][] generateNewBoard() {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-    @Override
-    public void notifyNewBoard() {
-        // TODO Auto-generated method stub
-
+        boardView = new BoardView(this.cells);
     }
 
     @Override
     public PrintableBoardState exportPrintableBoardState() {
-        PrintableBoardState printableState = new PrintableBoardState();
-        for (int i = 0; i < 16; i++) {
-            for (int j = 0; j < 16; j++) {
-                printableState.appendImage(i, j, this.cells[i][j].getCellImage());
-            }
-        }
-        return printableState;
+        return this.boardView.exportPrintableBoardState();
     }
 
     @Override
