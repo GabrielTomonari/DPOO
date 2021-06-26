@@ -81,7 +81,6 @@ public class HeroManager implements iHeroManager {
 
     @Override
     public void update(Position positionToMove) {
-        System.out.println("Hero has received position");
         this.moveHero(positionToMove);
     }
 

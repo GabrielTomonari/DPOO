@@ -7,9 +7,11 @@ import Utils.Position;
  */
 public class MovableCell implements iCell {
     String imagePath;
+    Position position;
 
-    MovableCell(String path) {
+    MovableCell(String path, Position position) {
         this.imagePath = path;
+        this.position = position;
     }
 
     @Override
@@ -18,9 +20,8 @@ public class MovableCell implements iCell {
     }
 
     @Override
-    public void activateInteraction(BoardController controller) {
-        System.out.println("movind hero");
-        controller.notifyMovement(new Position(5, 5));
+    public void activateInteraction(iBoardLogicController controller) {
+        controller.notifyListeners(this.position);
     }
 
 }

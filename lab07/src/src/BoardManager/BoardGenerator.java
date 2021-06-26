@@ -1,7 +1,10 @@
 package BoardManager;
+
 import java.util.concurrent.ThreadLocalRandom;
 
-public class BoardGenerator implements iBoardGenerator{
+import Utils.Position;
+
+public class BoardGenerator implements iBoardGenerator {
 
     @Override
     public iCell[][] generateNewBoard() {
@@ -14,8 +17,8 @@ public class BoardGenerator implements iBoardGenerator{
                 if (randomNum > 50) {
                     randomIndex = ThreadLocalRandom.current().nextInt(1, 5);
                 }
-                String path = "file:assets/img/movableCell/movableCell"+randomIndex+".png";
-                cells[i][j] = new MovableCell(path);
+                String path = "file:assets/img/movableCell/movableCell" + randomIndex + ".png";
+                cells[i][j] = new MovableCell(path, new Position(i, j));
             }
         }
         return cells;
@@ -24,7 +27,7 @@ public class BoardGenerator implements iBoardGenerator{
     @Override
     public void notifyNewBoard() {
         // TODO Auto-generated method stub
-        
+
     }
-    
+
 }

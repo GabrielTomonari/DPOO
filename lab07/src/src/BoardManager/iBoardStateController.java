@@ -2,6 +2,6 @@ package BoardManager;
 
 import Utils.Position;
 
-public interface iBoardController {
+public interface iBoardStateController {
     public void interactWithCellAt(Position position);
 }

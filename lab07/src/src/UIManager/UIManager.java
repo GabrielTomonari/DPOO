@@ -32,7 +32,7 @@ public class UIManager implements iUIManager {
     private Group bgRoot;
 
     // SubClasses
-    private UIController controller;
+    private iUIController controller;
 
     @Override
     public void updateState() {
@@ -101,7 +101,6 @@ public class UIManager implements iUIManager {
         heroView.setPreserveRatio(true);
         heroView.setFitHeight(this.cellHeigth);
 
-        System.out.println("linha: " + heroStatus.position.line);
         heroView.setX(heroStatus.position.column * this.cellWidth);
         heroView.setY(heroStatus.position.line * this.cellHeigth);
 

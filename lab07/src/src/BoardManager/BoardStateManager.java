@@ -10,13 +10,16 @@ public class BoardStateManager implements iBoardStateManager {
     iUIManager ui;
     iHeroManager hero;
     iBoardGenerator boardGenerator;
-    BoardController boardController;
+    iBoardStateController boardState;
+    iBoardLogicController boardLogic;
 
     public BoardStateManager() {
         boardGenerator = new BoardGenerator();
         this.cells = boardGenerator.generateNewBoard();
 
-        boardController = new BoardController(this.cells);
+        boardLogic = new BoardLogicController();
+        boardState = new BoardStateController(this.cells, this.boardLogic);
+
     }
 
     @Override
@@ -44,19 +47,19 @@ public class BoardStateManager implements iBoardStateManager {
 
     @Override
     public void interactWithCellAt(Position position) {
-        this.boardController.interactWithCellAt(position);
+        this.boardState.interactWithCellAt(position);
     }
 
     @Override
     public void connectHero(iHeroManager hero) {
         this.hero = hero;
-        this.boardController.addObserver(this.hero);
+        this.boardLogic.addObserver(this.hero);
     }
 
     @Override
     public void connectUI(iUIManager uiManager) {
         this.ui = uiManager;
-        this.boardController.addObserver(this.ui);
+        this.boardLogic.addObserver(this.ui);
     }
 
 }

@@ -5,18 +5,17 @@ import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.input.KeyEvent;
 
-public class UIController extends DirectionObservable {
+public class UIController extends DirectionObservable implements iUIController {
     Scene scene;
-    Direction command;
 
     public UIController(Scene scene) {
         this.scene = scene;
     }
 
     @Override
-    protected void notifyCommand() {
+    public void notifyListeners(Direction info) {
         for (iDirectionObserver observer : observers) {
-            observer.update(this.command);
+            observer.update(info);
         }
     }
 
@@ -24,23 +23,19 @@ public class UIController extends DirectionObservable {
         switch (event.getCode()) {
             case W:
             case UP:
-                this.command = Direction.Up;
-                notifyCommand();
+                notifyListeners(Direction.Up);
                 break;
             case S:
             case DOWN:
-                this.command = Direction.Down;
-                notifyCommand();
+                notifyListeners(Direction.Down);
                 break;
             case LEFT:
             case A:
-                this.command = Direction.Left;
-                notifyCommand();
+                notifyListeners(Direction.Left);
                 break;
             case RIGHT:
             case D:
-                this.command = Direction.Rigth;
-                notifyCommand();
+                notifyListeners(Direction.Rigth);
                 break;
             default:
                 break;

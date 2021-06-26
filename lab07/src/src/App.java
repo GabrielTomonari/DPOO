@@ -1,9 +1,6 @@
-import BoardManager.PrintableBoardState;
 import BoardManager.iBoardStateManager;
 import BoardManager.BoardStateManager;
-import HeroManager.FakeHeroManager;
 import HeroManager.HeroManager;
-import HeroManager.PrintableHeroStatus;
 import HeroManager.iHeroManager;
 import UIManager.UIManager;
 import UIManager.iUIManager;
