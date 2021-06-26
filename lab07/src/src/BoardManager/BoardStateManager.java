@@ -1,5 +1,7 @@
 package BoardManager;
 
+import Utils.Position;
+
 public class BoardStateManager implements iBoardStateManager {
     iCell cells[][];
     iBoardGenerator boardGenerator;
@@ -30,6 +32,18 @@ public class BoardStateManager implements iBoardStateManager {
             }
         }
         return printableState;
+    }
+
+    @Override
+    public void interactWithCellAt(Position position) {
+        try {
+            this.cells[position.line][position.column].activateInteraction(this);
+        } catch (ArrayIndexOutOfBoundsException e) {
+            ObstacleCell tempo = new ObstacleCell();
+            tempo.activateInteraction(this);
+        } catch (Exception e) {
+            throw e;
+        }
     }
 
 }

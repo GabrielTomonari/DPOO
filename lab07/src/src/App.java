@@ -14,7 +14,7 @@ import javafx.stage.Stage;
  ** App
  */
 public class App extends Application {
-    iBoardStateManager room = new BoardStateManager();
+    iBoardStateManager board = new BoardStateManager();
     iUIManager userInterface = new UIManager();
     iHeroManager hero = new HeroManager();
 
@@ -24,10 +24,11 @@ public class App extends Application {
 
     private void setUp(Stage primaryStage) {
         // GameLogic SetUp
-        this.room.generateNewBoard();
+        this.board.generateNewBoard();
         this.hero.placeHero();
         this.userInterface.setStage(primaryStage);
-        this.userInterface.connectBoard(this.room);
+        this.hero.connectBoard(this.board);
+        this.userInterface.connectBoard(this.board);
         this.userInterface.connectHero(this.hero);
     }
 

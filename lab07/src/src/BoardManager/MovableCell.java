@@ -11,14 +11,14 @@ public class MovableCell implements iCell {
     }
 
     @Override
-    public void activateInteraction() {
-        // TODO Auto-generated method stub
-
+    public String getCellImage() {
+        return this.imagePath;
     }
 
     @Override
-    public String getCellImage() {
-        return this.imagePath;
+    public void activateInteraction(iBoardController controller) {
+        System.out.println("Interacting with a movable cell");
+
     }
 
 }

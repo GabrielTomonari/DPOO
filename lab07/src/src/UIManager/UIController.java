@@ -1,32 +1,21 @@
 package UIManager;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import Utils.Direction;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.input.KeyEvent;
 
-public class UIController {
+public class UIController extends CommandObservable {
     Scene scene;
     iCommand command;
-    private List<iCommandObserver> observers = new ArrayList<>();
 
     public UIController(Scene scene) {
         this.scene = scene;
         this.command = new MoveCommand();
     }
 
-    public void addObserver(iCommandObserver observer) {
-        this.observers.add(observer);
-    }
-
-    public void removeObserver(iCommandObserver observer) {
-        this.observers.remove(observer);
-    }
-
-    private void notifyCommand() {
+    @Override
+    protected void notifyCommand() {
         for (iCommandObserver observer : observers) {
             observer.update(this.command);
         }

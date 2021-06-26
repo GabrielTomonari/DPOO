@@ -1,8 +1,9 @@
 package HeroManager;
 
+import BoardManager.iBoardManConsumer;
 import UIManager.iCommandObserver;
 
-public interface iHeroManager extends iCommandObserver {
+public interface iHeroManager extends iCommandObserver, iBoardManConsumer {
 
     public boolean isAlive();
 

@@ -1,5 +1,7 @@
 package BoardManager;
 
+import Utils.Position;
+
 public class FakeBoardManager implements iBoardStateManager {
 
     @Override
@@ -26,6 +28,12 @@ public class FakeBoardManager implements iBoardStateManager {
         }
 
         return state;
+    }
+
+    @Override
+    public void interactWithCellAt(Position position) {
+        // TODO Auto-generated method stub
+
     }
 
 }

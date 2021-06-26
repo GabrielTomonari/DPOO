@@ -1,5 +1,6 @@
 package HeroManager;
 
+import BoardManager.iBoardStateManager;
 import UIManager.iCommand;
 import Utils.Direction;
 import Utils.Position;
@@ -10,6 +11,9 @@ public class HeroManager implements iHeroManager {
     private int initialHP = 10;
     private int initialEnergy = 10;
     private int initialMaxXp = 10;
+
+    // GameLogic
+    private iBoardStateManager board;
 
     // hero Variables
     private Position position;
@@ -66,22 +70,15 @@ public class HeroManager implements iHeroManager {
 
     @Override
     public void update(iCommand command) {
-        switch (command.getInfo()) {
-            case Up:
-                System.out.println("Subindo");
-                break;
-            case Down:
-                System.out.println("Descendo");
-                break;
-            case Left:
-                System.out.println("Direita");
-                break;
-            case Rigth:
-                System.out.println("Esquerda");
-                break;
-            default:
-                break;
-        }
+        Position positionToInteract;
+
+        positionToInteract = new Position(this.position, command.getInfo());
+        this.board.interactWithCellAt(positionToInteract);
+    }
+
+    @Override
+    public void connectBoard(iBoardStateManager board) {
+        this.board = board;
     }
 
 }

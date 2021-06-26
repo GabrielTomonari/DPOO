@@ -1,5 +1,5 @@
 package BoardManager;
 
-public interface iBoardStateManager extends iBoardGenerator, iBoardView{
+public interface iBoardStateManager extends iBoardGenerator, iBoardView, iBoardController {
 
 }

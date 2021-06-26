@@ -1,5 +1,6 @@
 package HeroManager;
 
+import BoardManager.iBoardStateManager;
 import UIManager.iCommand;
 import Utils.Direction;
 import Utils.Position;
@@ -37,6 +38,12 @@ public class FakeHeroManager implements iHeroManager {
 
     @Override
     public void update(iCommand command) {
+        // TODO Auto-generated method stub
+
+    }
+
+    @Override
+    public void connectBoard(iBoardStateManager board) {
         // TODO Auto-generated method stub
 
     }

@@ -1,8 +1,6 @@
 package UIManager;
 
-import HeroManager.PrintableHeroStatus;
 import HeroManager.iHeroManConsumer;
-import BoardManager.PrintableBoardState;
 import BoardManager.iBoardManConsumer;
 import javafx.stage.Stage;
 

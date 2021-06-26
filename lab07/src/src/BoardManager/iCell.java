@@ -1,6 +1,7 @@
 package BoardManager;
 
 public interface iCell {
-    public void activateInteraction();
+    public void activateInteraction(iBoardController controller);
+
     public String getCellImage();
 }
