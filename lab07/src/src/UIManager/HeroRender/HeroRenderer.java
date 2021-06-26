@@ -32,6 +32,23 @@ public class HeroRenderer {
         heroView.setX(status.position.column * this.cellWidth);
         heroView.setY(status.position.line * this.cellHeigth);
 
+        switch (this.status.facingDirection) {
+            case Down:
+                break;
+            case Left:
+                heroView.setRotate(90);
+                break;
+            case Up:
+                heroView.setScaleY(-1);
+                break;
+            case Rigth:
+                heroView.setRotate(90);
+                heroView.setScaleY(-1);
+                break;
+            default:
+                break;
+        }
+
         return heroView;
     }
 }

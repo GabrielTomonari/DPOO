@@ -1,7 +1,8 @@
 [x] Notify when to update for performance?
 [x] review board controller interfaces
 [x] Use generics in observable?
-[] Folders Refactor
-[] Update facingDirection
+[x] Folders Refactor
+[x] Update facingDirection
+[x] Refactor BordView
+
 [] Make smoother keyboard listening (key up and down combination)
-[] Refactor BordView

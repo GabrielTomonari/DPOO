@@ -1,10 +1,7 @@
 package BoardManager.BoardGenerator;
 
-import BoardManager.Cells.iCell;
+public interface iBoardGenerator extends iNewBoardObservable {
 
-public interface iBoardGenerator {
+    public void generateNewBoard();
 
-    public iCell[][] generateNewBoard();
-
-    public void notifyNewBoard();
 }

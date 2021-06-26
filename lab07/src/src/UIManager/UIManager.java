@@ -1,6 +1,7 @@
 package UIManager;
 
 import BoardManager.iBoardManager;
+import BoardManager.BoardGenerator.NewBoardEvent;
 import BoardManager.BoardView.PrintableBoardState;
 import HeroManager.PrintableHeroStatus;
 import HeroManager.iHeroManager;
@@ -104,6 +105,11 @@ public class UIManager implements iUIManager {
 
     @Override
     public void update(Position positionToMove) {
+        this.updateState();
+    }
+
+    @Override
+    public void update(NewBoardEvent event) {
         this.updateState();
     }
 }

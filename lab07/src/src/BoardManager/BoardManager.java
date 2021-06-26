@@ -15,7 +15,8 @@ import UIManager.iUIManager;
 import Utils.Position;
 
 public class BoardManager implements iBoardManager {
-    iCell cells[][];
+    iCell cells[][] = new iCell[16][16];
+
     iUIManager ui;
     iHeroManager hero;
     iBoardGenerator boardGenerator;
@@ -24,10 +25,10 @@ public class BoardManager implements iBoardManager {
     iBoardLogicController boardLogic;
 
     public BoardManager() {
-        boardGenerator = new BoardGenerator();
-        this.cells = boardGenerator.generateNewBoard();
+        boardGenerator = new BoardGenerator(this.cells);
+        boardGenerator.generateNewBoard();
 
-        boardLogic = new BoardLogicController();
+        boardLogic = new BoardLogicController(boardGenerator);
         boardState = new BoardStateController(this.cells, this.boardLogic);
         boardView = new BoardView(this.cells);
     }
@@ -46,12 +47,14 @@ public class BoardManager implements iBoardManager {
     public void connectHero(iHeroManager hero) {
         this.hero = hero;
         this.boardLogic.addObserver(this.hero);
+        this.boardGenerator.addObserver(this.hero);
     }
 
     @Override
     public void connectUI(iUIManager uiManager) {
         this.ui = uiManager;
         this.boardLogic.addObserver(this.ui);
+        this.boardGenerator.addObserver(this.ui);
     }
 
 }

@@ -1,6 +1,7 @@
 package HeroManager;
 
 import BoardManager.iBoardManager;
+import BoardManager.BoardGenerator.NewBoardEvent;
 import Utils.Direction;
 import Utils.Position;
 
@@ -73,8 +74,9 @@ public class HeroManager implements iHeroManager {
 
     @Override
     public void update(Direction command) {
-        Position positionToInteract;
+        this.facingDirection = command;
 
+        Position positionToInteract;
         positionToInteract = new Position(this.position, command);
         this.board.interactWithCellAt(positionToInteract);
     }
@@ -87,6 +89,11 @@ public class HeroManager implements iHeroManager {
     @Override
     public void connectBoard(iBoardManager board) {
         this.board = board;
+    }
+
+    @Override
+    public void update(NewBoardEvent event) {
+        this.placeHero();
     }
 
 }
