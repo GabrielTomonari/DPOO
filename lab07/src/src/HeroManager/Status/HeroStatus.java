@@ -122,6 +122,7 @@ public class HeroStatus implements iHeroStatus {
         status.hasFireGene = this.hasGene(GeneType.Fire);
         status.hasWaterGene = this.hasGene(GeneType.Water);
         status.hasEarthGene = this.hasGene(GeneType.Earth);
+        status.geneCounter = this.geneCounter;
 
         return status;
     }

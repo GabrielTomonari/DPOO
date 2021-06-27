@@ -23,9 +23,6 @@ public class SidebarRenderer {
         ImageView sidebarView = this.getSideBarView();
         this.bgRoot.getChildren().add(sidebarView);
 
-        ImageView[] foodElements = getFoodElements();
-        this.bgRoot.getChildren().addAll(foodElements);
-
         ImageView lifeBar = getLifeBar();
         this.bgRoot.getChildren().add(lifeBar);
         Text lifeValue = getLifeValue();
@@ -36,11 +33,46 @@ public class SidebarRenderer {
         Text energyValue = getEnergyValue();
         this.bgRoot.getChildren().add(energyValue);
 
+        ImageView[] foodElements = getFoodElements();
+        this.bgRoot.getChildren().addAll(foodElements);
+
+        ImageView[] geneElements = getGeneElements();
+        this.bgRoot.getChildren().addAll(geneElements);
+
         Text xpValue = getXpValue();
         this.bgRoot.getChildren().add(xpValue);
 
         Text levelValue = getLevelValue();
         this.bgRoot.getChildren().add(levelValue);
+    }
+
+    private ImageView[] getGeneElements() {
+        ImageView[] genesView = new ImageView[this.heroStatus.geneCounter];
+        int counter = 0;
+
+        if (this.heroStatus.hasFireGene) {
+            Image fireGeneImg = new Image("file:assets/img/sidebar/dna1.png");
+            genesView[counter] = new ImageView(fireGeneImg);
+            genesView[counter].setX(830);
+            genesView[counter].setY(308);
+            counter++;
+        }
+        if (this.heroStatus.hasWaterGene) {
+            Image waterGeneImg = new Image("file:assets/img/sidebar/dna2.png");
+            genesView[counter] = new ImageView(waterGeneImg);
+            genesView[counter].setX(867);
+            genesView[counter].setY(308);
+            counter++;
+        }
+        if (this.heroStatus.hasEarthGene) {
+            Image EarthGeneImg = new Image("file:assets/img/sidebar/dna3.png");
+            genesView[counter] = new ImageView(EarthGeneImg);
+            genesView[counter].setX(904);
+            genesView[counter].setY(308);
+            counter++;
+        }
+
+        return genesView;
     }
 
     private Text getLevelValue() {
