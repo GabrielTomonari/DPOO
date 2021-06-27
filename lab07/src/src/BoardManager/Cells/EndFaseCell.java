@@ -1,22 +1,21 @@
 package BoardManager.Cells;
 
 import BoardManager.BoardLogic.iBoardLogicController;
+import Utils.Position;
 
 /**
  * EndFaseCell
  */
-public class EndFaseCell implements iCell {
-    String imagePath = "file:assets/img/portalCell/portal.png";
-
-    @Override
-    public void activateInteraction(iBoardLogicController controller) {
-        controller.generateNewBoard();
-        controller.replaceHero();
+public class EndFaseCell extends MovableCell {
+    public EndFaseCell(Position position) {
+        super("file:assets/img/portalCell/portal.png", position);
     }
 
     @Override
-    public String getCellImage() {
-        return this.imagePath;
+    public void activateInteraction(iBoardLogicController controller) {
+        // super.activateInteraction(controller);
+        controller.generateNewBoard();
+        controller.replaceHero();
     }
 
 }

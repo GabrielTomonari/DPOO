@@ -2,6 +2,7 @@ package HeroManager;
 
 import BoardManager.iBoardManager;
 import BoardManager.BoardGenerator.NewBoardEvent;
+import HeroManager.Collectables.iCollectable;
 import HeroManager.Status.HeroStatus;
 import HeroManager.Status.iHeroStatus;
 import Utils.Direction;
@@ -53,6 +54,11 @@ public class HeroManager implements iHeroManager {
     @Override
     public void placeHero() {
         this.heroStatus.placeHero();
+    }
+
+    @Override
+    public void update(iCollectable item) {
+        item.activate(this.heroStatus);
     }
 
 }

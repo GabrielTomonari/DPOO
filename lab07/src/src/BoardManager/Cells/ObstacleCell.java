@@ -1,21 +1,15 @@
 package BoardManager.Cells;
 
 import BoardManager.BoardLogic.iBoardLogicController;
+import Utils.Position;
 
-public class ObstacleCell implements iCell {
-    String imgPath;
-
-    public ObstacleCell(String imgPath) {
-        this.imgPath = imgPath;
+public class ObstacleCell extends BaseCell {
+    public ObstacleCell(String imgPath, Position position) {
+        super(imgPath, position);
     }
 
     @Override
     public void activateInteraction(iBoardLogicController controller) {
-    }
-
-    @Override
-    public String getCellImage() {
-        return this.imgPath;
     }
 
 }

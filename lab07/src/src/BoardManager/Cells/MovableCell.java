@@ -6,18 +6,9 @@ import Utils.Position;
 /**
  * MovableCell
  */
-public class MovableCell implements iCell {
-    String imagePath;
-    Position position;
-
-    public MovableCell(String path, Position position) {
-        this.imagePath = path;
-        this.position = position;
-    }
-
-    @Override
-    public String getCellImage() {
-        return this.imagePath;
+public abstract class MovableCell extends BaseCell {
+    public MovableCell(String imagePath, Position position) {
+        super(imagePath, position);
     }
 
     @Override
