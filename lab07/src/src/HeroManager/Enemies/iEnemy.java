@@ -8,4 +8,6 @@ public interface iEnemy {
     public void receiveDamageFrom(iHeroStatus hero);
 
     public boolean isDefeated();
+
+    public String getImage();
 }

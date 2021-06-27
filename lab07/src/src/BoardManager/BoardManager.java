@@ -66,6 +66,7 @@ public class BoardManager implements iBoardManager {
         this.ui = uiManager;
         this.boardLogic.addObserver(this.ui);
         this.boardGenerator.addObserver(this.ui);
+        this.boardCombat.addObserver(this.ui);
     }
 
 }

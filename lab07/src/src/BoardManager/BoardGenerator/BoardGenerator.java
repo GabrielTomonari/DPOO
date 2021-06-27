@@ -5,9 +5,12 @@ import java.util.concurrent.ThreadLocalRandom;
 import BoardManager.Cells.CollectableCell;
 import BoardManager.Cells.EmptyCell;
 import BoardManager.Cells.EndFaseCell;
+import BoardManager.Cells.EnemyCell;
 import BoardManager.Cells.ObstacleCell;
 import BoardManager.Cells.iCell;
 import HeroManager.Collectables.Banana;
+import HeroManager.Enemies.FireEnemy;
+import HeroManager.Enemies.iEnemy;
 import Utils.Position;
 
 public class BoardGenerator extends NewBoardObservable implements iBoardGenerator {
@@ -22,6 +25,7 @@ public class BoardGenerator extends NewBoardObservable implements iBoardGenerato
         this.fillWithEmptyCells();
         this.fillWithObstaclesCell();
         this.fillWithCollectableCells();
+        this.fillWithEnemies();
         this.fillWithEndFaseCell();
         notifyListeners(new NewBoardEvent());
     }
@@ -72,6 +76,11 @@ public class BoardGenerator extends NewBoardObservable implements iBoardGenerato
             }
         }
 
+    }
+
+    private void fillWithEnemies() {
+        iEnemy fireDude = new FireEnemy();
+        this.cells[7][12] = new EnemyCell(new Position(7, 12), fireDude);
     }
 
     private void fillWithEndFaseCell() {

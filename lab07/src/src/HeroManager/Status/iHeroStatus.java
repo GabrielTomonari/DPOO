@@ -9,7 +9,7 @@ public interface iHeroStatus {
 
     public void placeHero();
 
-    public void decreaseHP();
+    public void decreaseHP(int damage);
 
     public void decreaseEnergy();
 
@@ -20,6 +20,8 @@ public interface iHeroStatus {
     public void moveHero(Position position);
 
     public void setFacingDirection(Direction direction);
+
+    public int getAtackValue();
 
     public Position getPosition();
 

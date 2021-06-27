@@ -73,9 +73,9 @@ public class HeroStatus implements iHeroStatus {
         this.currentLevel++;
     }
 
-    public void decreaseHP() {
-        if (this.currentHP > 1) {
-            this.currentHP--;
+    public void decreaseHP(int damage) {
+        if (this.currentHP - damage > 0) {
+            this.currentHP -= damage;
         } else {
             this.currentHP = 0;
             System.out.println("hero is dead");
@@ -86,7 +86,7 @@ public class HeroStatus implements iHeroStatus {
         if (this.currentEnergy > 0) {
             this.currentEnergy--;
         } else {
-            decreaseHP();
+            decreaseHP(1);
         }
     }
 

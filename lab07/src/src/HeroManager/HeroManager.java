@@ -64,8 +64,11 @@ public class HeroManager implements iHeroManager {
 
     @Override
     public void update(iEnemy info) {
-        info.dealDamageTo(this.heroStatus);
-        info.receiveDamageFrom(this.heroStatus);
+        if (!info.isDefeated()) {
+            info.dealDamageTo(this.heroStatus);
+            info.receiveDamageFrom(this.heroStatus);
+        }
+        // todo add xp
     }
 
 }

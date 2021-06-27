@@ -5,6 +5,7 @@ import BoardManager.BoardGenerator.NewBoardEvent;
 import BoardManager.BoardView.PrintableBoardState;
 import HeroManager.PrintableHeroStatus;
 import HeroManager.iHeroManager;
+import HeroManager.Enemies.iEnemy;
 import UIManager.Animation.GameTimer;
 import UIManager.BackgroungRender.BackgroundRender;
 import UIManager.BoardRender.BoardRenderer;
@@ -110,6 +111,11 @@ public class UIManager implements iUIManager {
 
     @Override
     public void update(NewBoardEvent event) {
+        this.updateState();
+    }
+
+    @Override
+    public void update(iEnemy info) {
         this.updateState();
     }
 }

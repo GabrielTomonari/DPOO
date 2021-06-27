@@ -6,11 +6,11 @@ import HeroManager.Collectables.NullItem;
 import HeroManager.Enemies.iEnemy;
 import Utils.Position;
 
-public class EnemyCell extends CollectableCell implements iCell {
+public class EnemyCell extends CollectableCell {
     iEnemy enemy;
 
-    public EnemyCell(String imagePath, Position position, iEnemy enemy) {
-        super(imagePath, position, new NullItem());
+    public EnemyCell(Position position, iEnemy enemy) {
+        super(enemy.getImage(), position, new NullItem());
         this.enemy = enemy;
     }
 
@@ -22,6 +22,7 @@ public class EnemyCell extends CollectableCell implements iCell {
                 // TODO adicionar chance de gene
                 this.item = new Banana();
                 this.imagePath = "file:assets/img/collectableCell/Banana.png";
+                controller.notifyCombat(this.enemy);
             }
         } else {
             super.activateInteraction(controller);
