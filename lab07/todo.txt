@@ -6,3 +6,5 @@
 [x] Refactor BordView
 
 [] Make smoother keyboard listening (key up and down combination)
+
+

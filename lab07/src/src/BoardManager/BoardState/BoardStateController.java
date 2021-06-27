@@ -19,7 +19,7 @@ public class BoardStateController implements iBoardStateController {
         try {
             this.cells[position.line][position.column].activateInteraction(this.boardLogic);
         } catch (ArrayIndexOutOfBoundsException e) {
-            ObstacleCell tempo = new ObstacleCell();
+            ObstacleCell tempo = new ObstacleCell("");
             tempo.activateInteraction(this.boardLogic);
         } catch (Exception e) {
             throw e;

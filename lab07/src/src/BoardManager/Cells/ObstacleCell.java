@@ -3,6 +3,11 @@ package BoardManager.Cells;
 import BoardManager.BoardLogic.iBoardLogicController;
 
 public class ObstacleCell implements iCell {
+    String imgPath;
+
+    public ObstacleCell(String imgPath) {
+        this.imgPath = imgPath;
+    }
 
     @Override
     public void activateInteraction(iBoardLogicController controller) {
@@ -10,8 +15,7 @@ public class ObstacleCell implements iCell {
 
     @Override
     public String getCellImage() {
-        // TODO Auto-generated method stub
-        return null;
+        return this.imgPath;
     }
 
 }

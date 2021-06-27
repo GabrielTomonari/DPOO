@@ -71,7 +71,13 @@ public class SidebarRenderer {
 
         lifeBarView.setX(786);
         lifeBarView.setY(126);
-        lifeBarView.setFitWidth(lifeBarImg.getWidth() * this.heroStatus.currentHP / this.heroStatus.maxHP);
+
+        double sizeOfBar = lifeBarImg.getWidth() * this.heroStatus.currentHP / this.heroStatus.maxHP;
+        if (sizeOfBar == 0) {
+            lifeBarView.setVisible(false);
+        } else {
+            lifeBarView.setFitWidth(sizeOfBar);
+        }
 
         return lifeBarView;
     }
@@ -93,7 +99,12 @@ public class SidebarRenderer {
 
         lifeBarView.setX(786);
         lifeBarView.setY(182);
-        lifeBarView.setFitWidth(lifeBarImg.getWidth() * this.heroStatus.currentEnergy / this.heroStatus.maxEnergy);
+        double sizeOfBar = lifeBarImg.getWidth() * this.heroStatus.currentEnergy / this.heroStatus.maxEnergy;
+        if (sizeOfBar == 0) {
+            lifeBarView.setVisible(false);
+        } else {
+            lifeBarView.setFitWidth(sizeOfBar);
+        }
 
         return lifeBarView;
     }

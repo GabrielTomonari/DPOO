@@ -4,6 +4,7 @@ import java.util.concurrent.ThreadLocalRandom;
 
 import BoardManager.Cells.EndFaseCell;
 import BoardManager.Cells.MovableCell;
+import BoardManager.Cells.ObstacleCell;
 import BoardManager.Cells.iCell;
 import Utils.Position;
 
@@ -16,6 +17,19 @@ public class BoardGenerator extends NewBoardObservable implements iBoardGenerato
 
     @Override
     public void generateNewBoard() {
+        this.fillWithEmptyCells();
+        this.fillWithObstaclesCell();
+        this.fillWithEndFaseCell();
+    }
+
+    @Override
+    public void notifyListeners(NewBoardEvent event) {
+        for (iNewBoardObserver observer : observers) {
+            observer.update(event);
+        }
+    }
+
+    private void fillWithEmptyCells() {
         for (int i = 0; i < 16; i++) {
             for (int j = 0; j < 16; j++) {
                 int randomNum = ThreadLocalRandom.current().nextInt(0, 101);
@@ -27,16 +41,26 @@ public class BoardGenerator extends NewBoardObservable implements iBoardGenerato
                 this.cells[i][j] = new MovableCell(path, new Position(i, j));
             }
         }
-
-        this.cells[15][0] = new EndFaseCell();
-        notifyListeners(new NewBoardEvent());
     }
 
-    @Override
-    public void notifyListeners(NewBoardEvent event) {
-        for (iNewBoardObserver observer : observers) {
-            observer.update(event);
+    private void fillWithObstaclesCell() {
+        for (int i = 0; i < 16; i++) {
+            for (int j = 0; j < 16; j++) {
+                int randomNum = ThreadLocalRandom.current().nextInt(0, 101);
+                int randomIndex = 0;
+                if (randomNum > 70) {
+                    randomIndex = ThreadLocalRandom.current().nextInt(1, 4);
+                    String path = "file:assets/img/obstacleCell/Tree" + randomIndex + ".png";
+                    this.cells[i][j] = new ObstacleCell(path);
+                }
+            }
         }
+    }
+
+    private void fillWithEndFaseCell() {
+        // todo fill with safe path
+        this.cells[15][15] = new EndFaseCell();
+        notifyListeners(new NewBoardEvent());
     }
 
 }
