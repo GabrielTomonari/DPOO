@@ -66,7 +66,7 @@ public class BoardGenerator extends NewBoardObservable implements iBoardGenerato
         for (int i = 0; i < 16; i++) {
             for (int j = 0; j < 16; j++) {
                 int randomNum = ThreadLocalRandom.current().nextInt(0, 101);
-                if (randomNum > 90) {
+                if (randomNum > 95) {
                     this.cells[i][j] = new CollectableCell(pathToBanana, new Position(i, j), new Banana());
                 }
             }
