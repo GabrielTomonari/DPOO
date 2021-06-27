@@ -2,17 +2,18 @@ package HeroManager.Enemies;
 
 import HeroManager.Status.iHeroStatus;
 
-public class FireEnemy extends BaseEnemy {
-    private String imgPath = "file:assets/img/enemies/FireElemental.png";
+public class WaterEnemy extends BaseEnemy {
+    String imgPath = "file:assets/img/enemies/WaterElemental.png";
 
-    public FireEnemy() {
+    public WaterEnemy() {
+        this.setAtack(1);
         this.setLife(5);
-        this.setAtack(2);
     }
 
     @Override
     public void dealDamageTo(iHeroStatus hero) {
         hero.decreaseHP(this.getAtack());
+        hero.decreaseEnergy(this.getAtack());
     }
 
     @Override
@@ -20,7 +21,9 @@ public class FireEnemy extends BaseEnemy {
         this.setLife(this.getLife() - hero.getAtackValue());
     }
 
+    @Override
     public String getImage() {
         return this.imgPath;
     }
+
 }

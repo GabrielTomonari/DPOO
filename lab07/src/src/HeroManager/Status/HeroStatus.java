@@ -24,6 +24,8 @@ public class HeroStatus implements iHeroStatus {
     private int food;
     private int currentLevel;
     private int atackValue;
+    private GeneType[] genes;
+    private int geneCounter;
 
     public HeroStatus() {
         this.maxHP = this.initialHP;
@@ -35,6 +37,8 @@ public class HeroStatus implements iHeroStatus {
         this.food = 0;
         this.currentLevel = 0;
         this.setAtackValue(this.initialAtack);
+        this.geneCounter = 0;
+        this.genes = new GeneType[3];
     }
 
     public int getAtackValue() {
@@ -82,10 +86,11 @@ public class HeroStatus implements iHeroStatus {
         }
     }
 
-    public void decreaseEnergy() {
-        if (this.currentEnergy > 0) {
-            this.currentEnergy--;
+    public void decreaseEnergy(int damage) {
+        if (this.currentEnergy - damage > 0) {
+            this.currentEnergy -= damage;
         } else {
+            this.currentEnergy = 0;
             decreaseHP(1);
         }
     }
@@ -96,7 +101,7 @@ public class HeroStatus implements iHeroStatus {
 
     public void moveHero(Position position) {
         System.out.println(position.line + ", " + position.column);
-        this.decreaseEnergy();
+        this.decreaseEnergy(1);
         this.setPosition(position);
     }
 
@@ -114,6 +119,9 @@ public class HeroStatus implements iHeroStatus {
         status.currentEnergy = this.currentEnergy;
         status.food = this.food;
         status.currentLevel = this.currentLevel;
+        status.hasFireGene = this.hasGene(GeneType.Fire);
+        status.hasWaterGene = this.hasGene(GeneType.Water);
+        status.hasEarthGene = this.hasGene(GeneType.Earth);
 
         return status;
     }
@@ -125,6 +133,37 @@ public class HeroStatus implements iHeroStatus {
             this.food = 1;
             this.maxHP += 5;
             this.currentHP += 5;
+        }
+    }
+
+    @Override
+    public boolean hasGene(GeneType gene) {
+        for (GeneType heroGene : genes) {
+            if (gene == heroGene) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    @Override
+    public void addGene(GeneType gene) {
+        switch (gene) {
+            case Fire:
+                // increase attack
+                break;
+            case Water:
+                // increase energy
+                break;
+            case Earth:
+                // increase life
+                break;
+            default:
+                break;
+        }
+        if (!hasGene(gene)) {
+            this.genes[geneCounter] = gene;
+            this.geneCounter++;
         }
     }
 }

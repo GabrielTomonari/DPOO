@@ -9,7 +9,9 @@ import BoardManager.Cells.EnemyCell;
 import BoardManager.Cells.ObstacleCell;
 import BoardManager.Cells.iCell;
 import HeroManager.Collectables.Banana;
+import HeroManager.Enemies.EarthEnemy;
 import HeroManager.Enemies.FireEnemy;
+import HeroManager.Enemies.WaterEnemy;
 import HeroManager.Enemies.iEnemy;
 import Utils.Position;
 
@@ -80,6 +82,12 @@ public class BoardGenerator extends NewBoardObservable implements iBoardGenerato
     private void fillWithEnemies() {
         iEnemy fireDude = new FireEnemy();
         this.cells[7][12] = new EnemyCell(new Position(7, 12), fireDude);
+
+        iEnemy waterDude = new WaterEnemy();
+        this.cells[12][7] = new EnemyCell(new Position(12, 7), waterDude);
+
+        iEnemy earthEnemy = new EarthEnemy();
+        this.cells[4][5] = new EnemyCell(new Position(4, 5), earthEnemy);
     }
 
     private void fillWithEndFaseCell() {

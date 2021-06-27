@@ -11,7 +11,7 @@ public interface iHeroStatus {
 
     public void decreaseHP(int damage);
 
-    public void decreaseEnergy();
+    public void decreaseEnergy(int damage);
 
     public void restoreEnergy();
 
@@ -26,4 +26,8 @@ public interface iHeroStatus {
     public Position getPosition();
 
     public PrintableHeroStatus expPrintableHeroStatus();
+
+    public boolean hasGene(GeneType gene);
+
+    public void addGene(GeneType gene);
 }
