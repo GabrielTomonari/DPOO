@@ -2,6 +2,7 @@ package UIManager;
 
 import HeroManager.iHeroManConsumer;
 import HeroManager.Enemies.iCombatObserver;
+import UIManager.InterfaceController.iUIController;
 import BoardManager.iBoardManConsumer;
 import BoardManager.BoardGenerator.iNewBoardObserver;
 import BoardManager.BoardLogic.iMoveObserver;
@@ -15,4 +16,6 @@ public interface iUIManager
     public void setStage(Stage stage);
 
     public void render();
+
+    public iUIController getController();
 }

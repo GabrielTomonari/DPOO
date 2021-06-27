@@ -21,4 +21,5 @@ public class PrintableHeroStatus {
     public boolean hasEarthGene;
     public boolean hasWaterGene;
     public int geneCounter;
+    public boolean isDead;
 }

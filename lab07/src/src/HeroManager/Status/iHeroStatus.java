@@ -4,7 +4,7 @@ import HeroManager.PrintableHeroStatus;
 import Utils.Direction;
 import Utils.Position;
 
-public interface iHeroStatus {
+public interface iHeroStatus extends iDeathObservable {
     public boolean isAlive();
 
     public void placeHero();

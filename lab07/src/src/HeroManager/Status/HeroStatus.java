@@ -4,7 +4,7 @@ import HeroManager.PrintableHeroStatus;
 import Utils.Direction;
 import Utils.Position;
 
-public class HeroStatus implements iHeroStatus {
+public class HeroStatus extends DeathObservable implements iHeroStatus {
     // Config and Constants
     private Position initialPos = new Position(0, 0);
     private int initialHP = 10;
@@ -82,7 +82,7 @@ public class HeroStatus implements iHeroStatus {
             this.currentHP -= damage;
         } else {
             this.currentHP = 0;
-            System.out.println("hero is dead");
+            this.notifyListeners(new DeathEvent());
         }
     }
 
@@ -124,6 +124,7 @@ public class HeroStatus implements iHeroStatus {
         status.hasWaterGene = this.hasGene(GeneType.Water);
         status.hasEarthGene = this.hasGene(GeneType.Earth);
         status.geneCounter = this.geneCounter;
+        status.isDead = !this.isAlive();
 
         return status;
     }
@@ -183,5 +184,12 @@ public class HeroStatus implements iHeroStatus {
             this.levelUp();
         }
 
+    }
+
+    @Override
+    public void notifyListeners(DeathEvent info) {
+        for (iDeathObserver deathObserver : observers) {
+            deathObserver.update(info);
+        }
     }
 }

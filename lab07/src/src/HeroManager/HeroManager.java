@@ -6,6 +6,7 @@ import HeroManager.Collectables.iCollectable;
 import HeroManager.Enemies.iEnemy;
 import HeroManager.Status.HeroStatus;
 import HeroManager.Status.iHeroStatus;
+import UIManager.iUIManager;
 import Utils.Direction;
 import Utils.Position;
 
@@ -70,6 +71,11 @@ public class HeroManager implements iHeroManager {
         } else {
             this.heroStatus.increaseXP(10);
         }
+    }
+
+    @Override
+    public void connectUI(iUIManager uiManager) {
+        this.heroStatus.addObserver(uiManager.getController());
     }
 
 }

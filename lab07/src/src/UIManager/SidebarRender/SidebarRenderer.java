@@ -1,6 +1,7 @@
 package UIManager.SidebarRender;
 
 import HeroManager.PrintableHeroStatus;
+import Utils.FontConfigure;
 import javafx.scene.Group;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -79,7 +80,7 @@ public class SidebarRenderer {
         Text value = new Text();
 
         value.setText(Integer.toString(this.heroStatus.currentLevel));
-        this.setBaseTextStyle(value);
+        FontConfigure.setBaseTextStyle(value);
         value.setX(905);
         value.setY(460);
 
@@ -90,7 +91,7 @@ public class SidebarRenderer {
         Text value = new Text();
 
         value.setText(Integer.toString(this.heroStatus.currentXp) + "/" + Integer.toString(this.heroStatus.maxXp));
-        this.setBaseTextStyle(value);
+        FontConfigure.setBaseTextStyle(value);
         value.setX(870);
         value.setY(405);
 
@@ -118,7 +119,7 @@ public class SidebarRenderer {
         Text value = new Text();
 
         value.setText(Integer.toString(this.heroStatus.currentHP));
-        this.setBaseTextStyle(value);
+        FontConfigure.setBaseTextStyle(value);
         value.setX(969);
         value.setY(140);
 
@@ -145,16 +146,11 @@ public class SidebarRenderer {
         Text value = new Text();
 
         value.setText(Integer.toString(this.heroStatus.currentEnergy));
-        this.setBaseTextStyle(value);
+        FontConfigure.setBaseTextStyle(value);
         value.setX(969);
         value.setY(198);
 
         return value;
-    }
-
-    private void setBaseTextStyle(Text value) {
-        value.setFont(Font.font("Press Start 2P", FontWeight.BOLD, FontPosture.REGULAR, 18));
-        value.setFill(Color.WHITE);
     }
 
     private ImageView getSideBarView() {
