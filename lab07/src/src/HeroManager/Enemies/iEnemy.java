@@ -1,5 +1,6 @@
 package HeroManager.Enemies;
 
+import HeroManager.Collectables.iCollectable;
 import HeroManager.Status.iHeroStatus;
 
 public interface iEnemy {
@@ -10,4 +11,6 @@ public interface iEnemy {
     public boolean isDefeated();
 
     public String getImage();
+
+    public iCollectable dropItem();
 }

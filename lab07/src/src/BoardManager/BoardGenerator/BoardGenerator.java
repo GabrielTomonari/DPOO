@@ -80,14 +80,12 @@ public class BoardGenerator extends NewBoardObservable implements iBoardGenerato
     }
 
     private void fillWithEnemies() {
-        iEnemy fireDude = new FireEnemy();
-        this.cells[7][12] = new EnemyCell(new Position(7, 12), fireDude);
+        for (int i = 1; i < 11; i++) {
+            this.cells[0][i] = new EnemyCell(new Position(0, i), new FireEnemy());
+            this.cells[1][i] = new EnemyCell(new Position(1, i), new WaterEnemy());
+            this.cells[2][i] = new EnemyCell(new Position(2, i), new EarthEnemy());
+        }
 
-        iEnemy waterDude = new WaterEnemy();
-        this.cells[12][7] = new EnemyCell(new Position(12, 7), waterDude);
-
-        iEnemy earthEnemy = new EarthEnemy();
-        this.cells[4][5] = new EnemyCell(new Position(4, 5), earthEnemy);
     }
 
     private void fillWithEndFaseCell() {

@@ -67,8 +67,9 @@ public class HeroManager implements iHeroManager {
         if (!info.isDefeated()) {
             info.dealDamageTo(this.heroStatus);
             info.receiveDamageFrom(this.heroStatus);
+        } else {
+            this.heroStatus.increaseXP(10);
         }
-        // todo add xp
     }
 
 }

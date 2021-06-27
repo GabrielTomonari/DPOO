@@ -30,4 +30,6 @@ public interface iHeroStatus {
     public boolean hasGene(GeneType gene);
 
     public void addGene(GeneType gene);
+
+    public void increaseXP(int value);
 }

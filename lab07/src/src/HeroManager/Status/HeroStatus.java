@@ -102,6 +102,7 @@ public class HeroStatus implements iHeroStatus {
     public void moveHero(Position position) {
         System.out.println(position.line + ", " + position.column);
         this.decreaseEnergy(1);
+        this.increaseXP(1);
         this.setPosition(position);
     }
 
@@ -151,13 +152,14 @@ public class HeroStatus implements iHeroStatus {
     public void addGene(GeneType gene) {
         switch (gene) {
             case Fire:
-                // increase attack
+                this.setAtackValue(this.getAtackValue() * 2);
                 break;
             case Water:
-                // increase energy
+                this.maxEnergy = this.maxEnergy * 2;
                 break;
             case Earth:
-                // increase life
+                this.maxHP += 5;
+                this.currentHP += 5;
                 break;
             default:
                 break;
@@ -166,5 +168,20 @@ public class HeroStatus implements iHeroStatus {
             this.genes[geneCounter] = gene;
             this.geneCounter++;
         }
+    }
+
+    private void levelUp() {
+        this.currentXp -= this.maxXp;
+        this.maxXp = this.maxXp * 2;
+        this.maxEnergy += 5;
+    }
+
+    @Override
+    public void increaseXP(int value) {
+        this.currentXp += value;
+        if (this.currentXp >= this.maxXp) {
+            this.levelUp();
+        }
+
     }
 }

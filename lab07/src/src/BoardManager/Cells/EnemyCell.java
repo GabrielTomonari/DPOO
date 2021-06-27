@@ -20,9 +20,8 @@ public class EnemyCell extends CollectableCell {
         if (!enemy.isDefeated()) {
             controller.notifyCombat(this.enemy);
             if (enemy.isDefeated()) {
-                // TODO adicionar chance de gene
-                this.item = new Banana();
-                this.imagePath = "file:assets/img/collectableCell/Banana.png";
+                this.item = enemy.dropItem();
+                this.imagePath = item.getImage();
                 controller.notifyCombat(this.enemy);
             }
         } else {
