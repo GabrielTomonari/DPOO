@@ -3,6 +3,7 @@ package HeroManager;
 import BoardManager.iBoardManager;
 import BoardManager.BoardGenerator.NewBoardEvent;
 import HeroManager.Collectables.iCollectable;
+import HeroManager.Enemies.iEnemy;
 import HeroManager.Status.HeroStatus;
 import HeroManager.Status.iHeroStatus;
 import Utils.Direction;
@@ -59,6 +60,12 @@ public class HeroManager implements iHeroManager {
     @Override
     public void update(iCollectable item) {
         item.activate(this.heroStatus);
+    }
+
+    @Override
+    public void update(iEnemy info) {
+        info.dealDamageTo(this.heroStatus);
+        info.receiveDamageFrom(this.heroStatus);
     }
 
 }

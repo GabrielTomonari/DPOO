@@ -2,8 +2,10 @@ package BoardManager;
 
 import BoardManager.BoardGenerator.BoardGenerator;
 import BoardManager.BoardGenerator.iBoardGenerator;
+import BoardManager.BoardLogic.BoardCombatLogic;
 import BoardManager.BoardLogic.BoardItensLogic;
 import BoardManager.BoardLogic.BoardLogicController;
+import BoardManager.BoardLogic.iBoardCombatLogic;
 import BoardManager.BoardLogic.iBoardItensLogic;
 import BoardManager.BoardLogic.iBoardLogicController;
 import BoardManager.BoardState.BoardStateController;
@@ -26,14 +28,16 @@ public class BoardManager implements iBoardManager {
     iBoardStateController boardState;
     iBoardLogicController boardLogic;
     iBoardItensLogic boardItens;
+    iBoardCombatLogic boardCombat;
 
     public BoardManager() {
         boardGenerator = new BoardGenerator(this.cells);
         boardGenerator.generateNewBoard();
 
         boardItens = new BoardItensLogic();
+        boardCombat = new BoardCombatLogic();
 
-        boardLogic = new BoardLogicController(boardGenerator, boardItens);
+        boardLogic = new BoardLogicController(boardGenerator, boardItens, boardCombat);
         boardState = new BoardStateController(this.cells, this.boardLogic);
         boardView = new BoardView(this.cells);
     }
@@ -54,6 +58,7 @@ public class BoardManager implements iBoardManager {
         this.boardLogic.addObserver(this.hero);
         this.boardGenerator.addObserver(this.hero);
         this.boardItens.addObserver(this.hero);
+        this.boardCombat.addObserver(this.hero);
     }
 
     @Override

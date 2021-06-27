@@ -10,6 +10,7 @@ public class HeroStatus implements iHeroStatus {
     private int initialHP = 10;
     private int initialEnergy = 10;
     private int initialMaxXp = 10;
+    private int initialAtack = 1;
 
     // hero Variables
     private Position position;
@@ -22,6 +23,7 @@ public class HeroStatus implements iHeroStatus {
     private int currentEnergy;
     private int food;
     private int currentLevel;
+    private int atackValue;
 
     public HeroStatus() {
         this.maxHP = this.initialHP;
@@ -32,6 +34,15 @@ public class HeroStatus implements iHeroStatus {
         this.currentEnergy = this.maxEnergy;
         this.food = 0;
         this.currentLevel = 0;
+        this.setAtackValue(this.initialAtack);
+    }
+
+    public int getAtackValue() {
+        return atackValue;
+    }
+
+    private void setAtackValue(int atackValue) {
+        this.atackValue = atackValue;
     }
 
     public Position getPosition() {
