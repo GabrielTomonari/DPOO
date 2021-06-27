@@ -10,8 +10,9 @@ public class EnemyCell extends CollectableCell {
     iEnemy enemy;
 
     public EnemyCell(Position position, iEnemy enemy) {
-        super(enemy.getImage(), position, new NullItem());
+        super(position, new NullItem());
         this.enemy = enemy;
+        this.imagePath = enemy.getImage();
     }
 
     @Override
