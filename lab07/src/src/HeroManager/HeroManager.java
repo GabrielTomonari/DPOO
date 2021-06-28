@@ -1,55 +1,64 @@
 package HeroManager;
 
+import BoardManager.iBoardManager;
+import BoardManager.BoardGenerator.NewBoardEvent;
+import HeroManager.Collectables.iCollectable;
+import HeroManager.Status.HeroStatus;
+import HeroManager.Status.iHeroStatus;
 import Utils.Direction;
 import Utils.Position;
 
 public class HeroManager implements iHeroManager {
-    // Config and Constants
-    private Position initialPos = new Position(0, 0);
-    private int initialHP = 10;
-    private int initialEnergy = 10;
-
-    // hero Variables
-    private Position position;
-    public Direction facingDirection;
-    private int maxHP;
-    private int currentHP;
-    private int xp;
-    private int energy;
-    private int food;
+    // GameLogic
+    private iBoardManager board;
+    private iHeroStatus heroStatus;
 
     public HeroManager() {
-        this.maxHP = this.initialHP;
-        this.currentHP = this.maxHP;
-        this.xp = 0;
-        this.energy = this.initialEnergy;
-        this.food = 0;
+        this.heroStatus = new HeroStatus();
     }
 
     @Override
     public boolean isAlive() {
-        return this.currentHP > 0;
+        return this.heroStatus.isAlive();
     }
 
     @Override
     public PrintableHeroStatus expPrintableHeroStatus() {
-        PrintableHeroStatus status = new PrintableHeroStatus();
+        return this.heroStatus.expPrintableHeroStatus();
+    }
 
-        status.position = this.position;
-        status.facingDirection = this.facingDirection;
-        status.currentHP = this.currentHP;
-        status.maxHP = this.maxHP;
-        status.xp = this.xp;
-        status.energy = this.energy;
-        status.food = this.food;
+    @Override
+    public void update(Direction command) {
+        this.heroStatus.setFacingDirection(command);
 
-        return status;
+        Position positionToInteract;
+        positionToInteract = new Position(this.heroStatus.getPosition(), command);
+        this.board.interactWithCellAt(positionToInteract);
+    }
+
+    @Override
+    public void update(Position positionToMove) {
+        this.heroStatus.moveHero(positionToMove);
+    }
+
+    @Override
+    public void connectBoard(iBoardManager board) {
+        this.board = board;
+    }
+
+    @Override
+    public void update(NewBoardEvent event) {
+        this.placeHero();
     }
 
     @Override
     public void placeHero() {
-        this.position = this.initialPos;
-        this.facingDirection = Direction.Down;
+        this.heroStatus.placeHero();
+    }
+
+    @Override
+    public void update(iCollectable item) {
+        item.activate(this.heroStatus);
     }
 
 }

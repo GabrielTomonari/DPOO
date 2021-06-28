@@ -11,7 +11,10 @@ public class PrintableHeroStatus {
     public Direction facingDirection;
     public int currentHP;
     public int maxHP;
-    public int xp;
-    public int energy;
+    public int currentXp;
+    public int maxXp;
+    public int maxEnergy;
+    public int currentEnergy;
     public int food;
+    public int currentLevel;
 }
