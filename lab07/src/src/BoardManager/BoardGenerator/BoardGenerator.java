@@ -80,12 +80,31 @@ public class BoardGenerator extends NewBoardObservable implements iBoardGenerato
     }
 
     private void fillWithEnemies() {
-        for (int i = 1; i < 11; i++) {
-            this.cells[0][i] = new EnemyCell(new Position(0, i), new FireEnemy());
-            this.cells[1][i] = new EnemyCell(new Position(1, i), new WaterEnemy());
-            this.cells[2][i] = new EnemyCell(new Position(2, i), new EarthEnemy());
+        int randomNum, randomLine, randomColumn;
+
+        randomNum = ThreadLocalRandom.current().nextInt(0, 11);
+        if (randomNum > 4) {
+            randomLine = ThreadLocalRandom.current().nextInt(0, 16);
+            randomColumn = ThreadLocalRandom.current().nextInt(0, 16);
+            this.cells[randomLine][randomColumn] = new EnemyCell(new Position(randomLine, randomColumn),
+                    new FireEnemy());
         }
 
+        randomNum = ThreadLocalRandom.current().nextInt(0, 11);
+        if (randomNum > 4) {
+            randomLine = ThreadLocalRandom.current().nextInt(0, 16);
+            randomColumn = ThreadLocalRandom.current().nextInt(0, 16);
+            this.cells[randomLine][randomColumn] = new EnemyCell(new Position(randomLine, randomColumn),
+                    new WaterEnemy());
+        }
+
+        randomNum = ThreadLocalRandom.current().nextInt(0, 11);
+        if (randomNum > 4) {
+            randomLine = ThreadLocalRandom.current().nextInt(0, 16);
+            randomColumn = ThreadLocalRandom.current().nextInt(0, 16);
+            this.cells[randomLine][randomColumn] = new EnemyCell(new Position(randomLine, randomColumn),
+                    new EarthEnemy());
+        }
     }
 
     private void fillWithEndFaseCell() {
