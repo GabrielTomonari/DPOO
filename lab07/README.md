@@ -17,7 +17,7 @@
 
 ## Vídeo da Prévia
 
-> [Link para o vídeo](https://youtu.be/emUyXbDuNmo)
+> [Link para o vídeo](https://youtu.be/_ewy1hZ3GLc)
 
 ## Vídeo do Jogo
 
