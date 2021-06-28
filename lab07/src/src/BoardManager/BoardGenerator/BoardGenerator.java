@@ -108,8 +108,42 @@ public class BoardGenerator extends NewBoardObservable implements iBoardGenerato
     }
 
     private void fillWithEndFaseCell() {
-        // todo fill with safe path
+        generateSafePath();
         this.cells[15][15] = new EndFaseCell(new Position(15, 15));
     }
 
+    private void generateSafePath(){
+        int[][] safeCoordinates = {
+            {1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+            {0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0},
+            {0,0,1,0,0,0,0,0,0,0,1,1,1,0,0,0},
+            {0,0,1,0,1,1,1,0,0,0,1,0,1,1,0,0},
+            {0,0,1,0,1,0,1,0,0,0,1,0,0,1,0,0},
+            {0,0,1,1,1,0,1,0,0,0,1,0,1,1,0,0},
+            {0,0,0,0,0,0,1,0,0,0,1,0,1,0,0,0},
+            {0,0,1,1,1,1,1,0,0,0,1,0,1,0,0,0},
+            {0,0,1,0,0,0,0,0,0,0,1,0,1,1,1,0},
+            {0,0,1,0,0,0,0,0,1,1,1,0,0,0,1,0},
+            {0,0,1,0,0,0,0,0,1,0,0,0,0,0,1,0},
+            {0,0,1,0,0,0,1,1,1,0,1,1,1,1,1,0},
+            {0,0,1,1,1,1,1,0,0,1,1,0,0,0,0,0},
+            {0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0},
+            {0,0,0,0,0,0,0,0,0,1,1,1,1,1,0,0},
+            {0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1}
+        };
+        for (int i = 0; i < 16; i++) {
+            for (int j = 0; j < 16; j++) {
+                if (safeCoordinates[i][j]==1) {
+                    int randomNum = ThreadLocalRandom.current().nextInt(0, 101);
+                    int randomIndex = 0;
+                    if (randomNum > 50) {
+                        randomIndex = ThreadLocalRandom.current().nextInt(1, 5);
+                    }
+                    String path = "file:assets/img/movableCell/movableCell" + randomIndex + ".png";
+                    this.cells[i][j] = new EmptyCell(path, new Position(i, j));
+                    
+                }
+            }
+        }
+    }
 }
