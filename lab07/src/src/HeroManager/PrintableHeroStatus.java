@@ -17,4 +17,9 @@ public class PrintableHeroStatus {
     public int currentEnergy;
     public int food;
     public int currentLevel;
+    public boolean hasFireGene;
+    public boolean hasEarthGene;
+    public boolean hasWaterGene;
+    public int geneCounter;
+    public boolean isDead;
 }

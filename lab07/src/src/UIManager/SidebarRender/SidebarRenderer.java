@@ -1,6 +1,7 @@
 package UIManager.SidebarRender;
 
 import HeroManager.PrintableHeroStatus;
+import Utils.FontConfigure;
 import javafx.scene.Group;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -23,9 +24,6 @@ public class SidebarRenderer {
         ImageView sidebarView = this.getSideBarView();
         this.bgRoot.getChildren().add(sidebarView);
 
-        ImageView[] foodElements = getFoodElements();
-        this.bgRoot.getChildren().addAll(foodElements);
-
         ImageView lifeBar = getLifeBar();
         this.bgRoot.getChildren().add(lifeBar);
         Text lifeValue = getLifeValue();
@@ -36,6 +34,12 @@ public class SidebarRenderer {
         Text energyValue = getEnergyValue();
         this.bgRoot.getChildren().add(energyValue);
 
+        ImageView[] foodElements = getFoodElements();
+        this.bgRoot.getChildren().addAll(foodElements);
+
+        ImageView[] geneElements = getGeneElements();
+        this.bgRoot.getChildren().addAll(geneElements);
+
         Text xpValue = getXpValue();
         this.bgRoot.getChildren().add(xpValue);
 
@@ -43,11 +47,40 @@ public class SidebarRenderer {
         this.bgRoot.getChildren().add(levelValue);
     }
 
+    private ImageView[] getGeneElements() {
+        ImageView[] genesView = new ImageView[this.heroStatus.geneCounter];
+        int counter = 0;
+
+        if (this.heroStatus.hasFireGene) {
+            Image fireGeneImg = new Image("file:assets/img/sidebar/dna1.png");
+            genesView[counter] = new ImageView(fireGeneImg);
+            genesView[counter].setX(830);
+            genesView[counter].setY(308);
+            counter++;
+        }
+        if (this.heroStatus.hasWaterGene) {
+            Image waterGeneImg = new Image("file:assets/img/sidebar/dna2.png");
+            genesView[counter] = new ImageView(waterGeneImg);
+            genesView[counter].setX(867);
+            genesView[counter].setY(308);
+            counter++;
+        }
+        if (this.heroStatus.hasEarthGene) {
+            Image EarthGeneImg = new Image("file:assets/img/sidebar/dna3.png");
+            genesView[counter] = new ImageView(EarthGeneImg);
+            genesView[counter].setX(904);
+            genesView[counter].setY(308);
+            counter++;
+        }
+
+        return genesView;
+    }
+
     private Text getLevelValue() {
         Text value = new Text();
 
         value.setText(Integer.toString(this.heroStatus.currentLevel));
-        this.setBaseTextStyle(value);
+        FontConfigure.setBaseTextStyle(value);
         value.setX(905);
         value.setY(460);
 
@@ -58,7 +91,7 @@ public class SidebarRenderer {
         Text value = new Text();
 
         value.setText(Integer.toString(this.heroStatus.currentXp) + "/" + Integer.toString(this.heroStatus.maxXp));
-        this.setBaseTextStyle(value);
+        FontConfigure.setBaseTextStyle(value);
         value.setX(870);
         value.setY(405);
 
@@ -86,7 +119,7 @@ public class SidebarRenderer {
         Text value = new Text();
 
         value.setText(Integer.toString(this.heroStatus.currentHP));
-        this.setBaseTextStyle(value);
+        FontConfigure.setBaseTextStyle(value);
         value.setX(969);
         value.setY(140);
 
@@ -113,16 +146,11 @@ public class SidebarRenderer {
         Text value = new Text();
 
         value.setText(Integer.toString(this.heroStatus.currentEnergy));
-        this.setBaseTextStyle(value);
+        FontConfigure.setBaseTextStyle(value);
         value.setX(969);
         value.setY(198);
 
         return value;
-    }
-
-    private void setBaseTextStyle(Text value) {
-        value.setFont(Font.font("Press Start 2P", FontWeight.BOLD, FontPosture.REGULAR, 18));
-        value.setFill(Color.WHITE);
     }
 
     private ImageView getSideBarView() {

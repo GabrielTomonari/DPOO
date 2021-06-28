@@ -5,9 +5,14 @@ import java.util.concurrent.ThreadLocalRandom;
 import BoardManager.Cells.CollectableCell;
 import BoardManager.Cells.EmptyCell;
 import BoardManager.Cells.EndFaseCell;
+import BoardManager.Cells.EnemyCell;
 import BoardManager.Cells.ObstacleCell;
 import BoardManager.Cells.iCell;
 import HeroManager.Collectables.Banana;
+import HeroManager.Enemies.EarthEnemy;
+import HeroManager.Enemies.FireEnemy;
+import HeroManager.Enemies.WaterEnemy;
+import HeroManager.Enemies.iEnemy;
 import Utils.Position;
 
 public class BoardGenerator extends NewBoardObservable implements iBoardGenerator {
@@ -22,6 +27,7 @@ public class BoardGenerator extends NewBoardObservable implements iBoardGenerato
         this.fillWithEmptyCells();
         this.fillWithObstaclesCell();
         this.fillWithCollectableCells();
+        this.fillWithEnemies();
         this.fillWithEndFaseCell();
         notifyListeners(new NewBoardEvent());
     }
@@ -62,14 +68,22 @@ public class BoardGenerator extends NewBoardObservable implements iBoardGenerato
     }
 
     private void fillWithCollectableCells() {
-        String pathToBanana = "file:assets/img/collectableCell/Banana.png";
         for (int i = 0; i < 16; i++) {
             for (int j = 0; j < 16; j++) {
                 int randomNum = ThreadLocalRandom.current().nextInt(0, 101);
                 if (randomNum > 95) {
-                    this.cells[i][j] = new CollectableCell(pathToBanana, new Position(i, j), new Banana());
+                    this.cells[i][j] = new CollectableCell(new Position(i, j), new Banana());
                 }
             }
+        }
+
+    }
+
+    private void fillWithEnemies() {
+        for (int i = 1; i < 11; i++) {
+            this.cells[0][i] = new EnemyCell(new Position(0, i), new FireEnemy());
+            this.cells[1][i] = new EnemyCell(new Position(1, i), new WaterEnemy());
+            this.cells[2][i] = new EnemyCell(new Position(2, i), new EarthEnemy());
         }
 
     }

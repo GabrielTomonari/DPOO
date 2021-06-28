@@ -1,8 +1,10 @@
 package UIManager.InterfaceController;
 
+import HeroManager.Status.DeathEvent;
 import Utils.Direction;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
+import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 
 public class UIController extends DirectionObservable implements iUIController {
@@ -49,5 +51,10 @@ public class UIController extends DirectionObservable implements iUIController {
                 handleKeyBoard(event);
             }
         });
+    }
+
+    @Override
+    public void update(DeathEvent info) {
+        scene.setOnKeyReleased(null);
     }
 }

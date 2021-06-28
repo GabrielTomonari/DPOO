@@ -4,12 +4,13 @@ import HeroManager.PrintableHeroStatus;
 import Utils.Direction;
 import Utils.Position;
 
-public class HeroStatus implements iHeroStatus {
+public class HeroStatus extends DeathObservable implements iHeroStatus {
     // Config and Constants
     private Position initialPos = new Position(0, 0);
     private int initialHP = 10;
     private int initialEnergy = 10;
     private int initialMaxXp = 10;
+    private int initialAtack = 1;
 
     // hero Variables
     private Position position;
@@ -22,6 +23,9 @@ public class HeroStatus implements iHeroStatus {
     private int currentEnergy;
     private int food;
     private int currentLevel;
+    private int atackValue;
+    private GeneType[] genes;
+    private int geneCounter;
 
     public HeroStatus() {
         this.maxHP = this.initialHP;
@@ -32,6 +36,17 @@ public class HeroStatus implements iHeroStatus {
         this.currentEnergy = this.maxEnergy;
         this.food = 0;
         this.currentLevel = 0;
+        this.setAtackValue(this.initialAtack);
+        this.geneCounter = 0;
+        this.genes = new GeneType[3];
+    }
+
+    public int getAtackValue() {
+        return atackValue;
+    }
+
+    private void setAtackValue(int atackValue) {
+        this.atackValue = atackValue;
     }
 
     public Position getPosition() {
@@ -62,20 +77,21 @@ public class HeroStatus implements iHeroStatus {
         this.currentLevel++;
     }
 
-    public void decreaseHP() {
-        if (this.currentHP > 1) {
-            this.currentHP--;
+    public void decreaseHP(int damage) {
+        if (this.currentHP - damage > 0) {
+            this.currentHP -= damage;
         } else {
             this.currentHP = 0;
-            System.out.println("hero is dead");
+            this.notifyListeners(new DeathEvent());
         }
     }
 
-    public void decreaseEnergy() {
-        if (this.currentEnergy > 0) {
-            this.currentEnergy--;
+    public void decreaseEnergy(int damage) {
+        if (this.currentEnergy - damage > 0) {
+            this.currentEnergy -= damage;
         } else {
-            decreaseHP();
+            this.currentEnergy = 0;
+            decreaseHP(1);
         }
     }
 
@@ -85,7 +101,8 @@ public class HeroStatus implements iHeroStatus {
 
     public void moveHero(Position position) {
         System.out.println(position.line + ", " + position.column);
-        this.decreaseEnergy();
+        this.decreaseEnergy(1);
+        this.increaseXP(1);
         this.setPosition(position);
     }
 
@@ -103,6 +120,11 @@ public class HeroStatus implements iHeroStatus {
         status.currentEnergy = this.currentEnergy;
         status.food = this.food;
         status.currentLevel = this.currentLevel;
+        status.hasFireGene = this.hasGene(GeneType.Fire);
+        status.hasWaterGene = this.hasGene(GeneType.Water);
+        status.hasEarthGene = this.hasGene(GeneType.Earth);
+        status.geneCounter = this.geneCounter;
+        status.isDead = !this.isAlive();
 
         return status;
     }
@@ -114,6 +136,60 @@ public class HeroStatus implements iHeroStatus {
             this.food = 1;
             this.maxHP += 5;
             this.currentHP += 5;
+        }
+    }
+
+    @Override
+    public boolean hasGene(GeneType gene) {
+        for (GeneType heroGene : genes) {
+            if (gene == heroGene) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    @Override
+    public void addGene(GeneType gene) {
+        switch (gene) {
+            case Fire:
+                this.setAtackValue(this.getAtackValue() * 2);
+                break;
+            case Water:
+                this.maxEnergy = this.maxEnergy * 2;
+                break;
+            case Earth:
+                this.maxHP += 5;
+                this.currentHP += 5;
+                break;
+            default:
+                break;
+        }
+        if (!hasGene(gene)) {
+            this.genes[geneCounter] = gene;
+            this.geneCounter++;
+        }
+    }
+
+    private void levelUp() {
+        this.currentXp -= this.maxXp;
+        this.maxXp = this.maxXp * 2;
+        this.maxEnergy += 5;
+    }
+
+    @Override
+    public void increaseXP(int value) {
+        this.currentXp += value;
+        if (this.currentXp >= this.maxXp) {
+            this.levelUp();
+        }
+
+    }
+
+    @Override
+    public void notifyListeners(DeathEvent info) {
+        for (iDeathObserver deathObserver : observers) {
+            deathObserver.update(info);
         }
     }
 }

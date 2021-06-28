@@ -3,8 +3,10 @@ package HeroManager;
 import BoardManager.iBoardManager;
 import BoardManager.BoardGenerator.NewBoardEvent;
 import HeroManager.Collectables.iCollectable;
+import HeroManager.Enemies.iEnemy;
 import HeroManager.Status.HeroStatus;
 import HeroManager.Status.iHeroStatus;
+import UIManager.iUIManager;
 import Utils.Direction;
 import Utils.Position;
 
@@ -59,6 +61,21 @@ public class HeroManager implements iHeroManager {
     @Override
     public void update(iCollectable item) {
         item.activate(this.heroStatus);
+    }
+
+    @Override
+    public void update(iEnemy info) {
+        if (!info.isDefeated()) {
+            info.dealDamageTo(this.heroStatus);
+            info.receiveDamageFrom(this.heroStatus);
+        } else {
+            this.heroStatus.increaseXP(10);
+        }
+    }
+
+    @Override
+    public void connectUI(iUIManager uiManager) {
+        this.heroStatus.addObserver(uiManager.getController());
     }
 
 }

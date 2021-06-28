@@ -2,15 +2,19 @@ package BoardManager.BoardLogic;
 
 import BoardManager.BoardGenerator.iBoardGenerator;
 import HeroManager.Collectables.iCollectable;
+import HeroManager.Enemies.iEnemy;
 import Utils.Position;
 
 public class BoardLogicController extends PositionObservable implements iBoardLogicController {
     iBoardGenerator boardGenerator;
     iBoardItensLogic boardItems;
+    iBoardCombatLogic boardCombat;
 
-    public BoardLogicController(iBoardGenerator boardGenerator, iBoardItensLogic boardItems) {
+    public BoardLogicController(iBoardGenerator boardGenerator, iBoardItensLogic boardItems,
+            iBoardCombatLogic boardCombat) {
         this.boardGenerator = boardGenerator;
         this.boardItems = boardItems;
+        this.boardCombat = boardCombat;
     }
 
     @Override
@@ -34,6 +38,11 @@ public class BoardLogicController extends PositionObservable implements iBoardLo
     public void notifyItem(iCollectable info) {
         this.boardItems.notifyListeners(info);
 
+    }
+
+    @Override
+    public void notifyCombat(iEnemy info) {
+        this.boardCombat.notifyListeners(info);
     }
 
 }

@@ -5,9 +5,11 @@ import BoardManager.BoardGenerator.NewBoardEvent;
 import BoardManager.BoardView.PrintableBoardState;
 import HeroManager.PrintableHeroStatus;
 import HeroManager.iHeroManager;
+import HeroManager.Enemies.iEnemy;
 import UIManager.Animation.GameTimer;
 import UIManager.BackgroungRender.BackgroundRender;
 import UIManager.BoardRender.BoardRenderer;
+import UIManager.EndGamePopUp.PopUpRenderer;
 import UIManager.HeroRender.HeroRenderer;
 import UIManager.InterfaceController.UIController;
 import UIManager.InterfaceController.iUIController;
@@ -15,8 +17,6 @@ import UIManager.SidebarRender.SidebarRenderer;
 import Utils.Position;
 import javafx.scene.Group;
 import javafx.scene.Scene;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 public class UIManager implements iUIManager {
@@ -58,6 +58,9 @@ public class UIManager implements iUIManager {
 
         HeroRenderer heroRenderer = new HeroRenderer(bgRoot, heroStatus, cellHeigth, cellWidth);
         heroRenderer.renderHero();
+
+        PopUpRenderer popUpRenderer = new PopUpRenderer(bgRoot, heroStatus, screenWidth, screenHeigth);
+        popUpRenderer.renderPopUp();
 
     }
 
@@ -111,5 +114,15 @@ public class UIManager implements iUIManager {
     @Override
     public void update(NewBoardEvent event) {
         this.updateState();
+    }
+
+    @Override
+    public void update(iEnemy info) {
+        this.updateState();
+    }
+
+    @Override
+    public iUIController getController() {
+        return this.controller;
     }
 }
