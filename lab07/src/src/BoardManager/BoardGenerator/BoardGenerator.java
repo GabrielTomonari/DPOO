@@ -58,7 +58,7 @@ public class BoardGenerator extends NewBoardObservable implements iBoardGenerato
             for (int j = 0; j < 16; j++) {
                 int randomNum = ThreadLocalRandom.current().nextInt(0, 101);
                 int randomIndex = 0;
-                if (randomNum > 70) {
+                if (randomNum > 58) {
                     randomIndex = ThreadLocalRandom.current().nextInt(1, 4);
                     String path = "file:assets/img/obstacleCell/Tree" + randomIndex + ".png";
                     this.cells[i][j] = new ObstacleCell(path, new Position(i, j));
@@ -71,7 +71,7 @@ public class BoardGenerator extends NewBoardObservable implements iBoardGenerato
         for (int i = 0; i < 16; i++) {
             for (int j = 0; j < 16; j++) {
                 int randomNum = ThreadLocalRandom.current().nextInt(0, 101);
-                if (randomNum > 95) {
+                if (randomNum > 90) {
                     this.cells[i][j] = new CollectableCell(new Position(i, j), new Banana());
                 }
             }
@@ -112,28 +112,19 @@ public class BoardGenerator extends NewBoardObservable implements iBoardGenerato
         this.cells[15][15] = new EndFaseCell(new Position(15, 15));
     }
 
-    private void generateSafePath(){
-        int[][] safeCoordinates = {
-            {1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-            {0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0},
-            {0,0,1,0,0,0,0,0,0,0,1,1,1,0,0,0},
-            {0,0,1,0,1,1,1,0,0,0,1,0,1,1,0,0},
-            {0,0,1,0,1,0,1,0,0,0,1,0,0,1,0,0},
-            {0,0,1,1,1,0,1,0,0,0,1,0,1,1,0,0},
-            {0,0,0,0,0,0,1,0,0,0,1,0,1,0,0,0},
-            {0,0,1,1,1,1,1,0,0,0,1,0,1,0,0,0},
-            {0,0,1,0,0,0,0,0,0,0,1,0,1,1,1,0},
-            {0,0,1,0,0,0,0,0,1,1,1,0,0,0,1,0},
-            {0,0,1,0,0,0,0,0,1,0,0,0,0,0,1,0},
-            {0,0,1,0,0,0,1,1,1,0,1,1,1,1,1,0},
-            {0,0,1,1,1,1,1,0,0,1,1,0,0,0,0,0},
-            {0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0},
-            {0,0,0,0,0,0,0,0,0,1,1,1,1,1,0,0},
-            {0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1}
-        };
+    private void generateSafePath() {
+        int[][] safeCoordinates = { { 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+                { 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, { 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0 },
+                { 0, 0, 1, 0, 1, 1, 1, 0, 0, 0, 1, 0, 1, 1, 0, 0 }, { 0, 0, 1, 0, 1, 0, 1, 0, 0, 0, 1, 0, 0, 1, 0, 0 },
+                { 0, 0, 1, 1, 1, 0, 1, 0, 0, 0, 1, 0, 1, 1, 0, 0 }, { 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0, 0, 0 },
+                { 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 1, 0, 1, 0, 0, 0 }, { 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 1, 1, 0 },
+                { 0, 0, 1, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 1, 0 }, { 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0 },
+                { 0, 0, 1, 0, 0, 0, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0 }, { 0, 0, 1, 1, 1, 1, 1, 0, 0, 1, 1, 0, 0, 0, 0, 0 },
+                { 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0 }, { 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0 },
+                { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1 } };
         for (int i = 0; i < 16; i++) {
             for (int j = 0; j < 16; j++) {
-                if (safeCoordinates[i][j]==1) {
+                if (safeCoordinates[i][j] == 1) {
                     int randomNum = ThreadLocalRandom.current().nextInt(0, 101);
                     int randomIndex = 0;
                     if (randomNum > 50) {
@@ -141,7 +132,7 @@ public class BoardGenerator extends NewBoardObservable implements iBoardGenerato
                     }
                     String path = "file:assets/img/movableCell/movableCell" + randomIndex + ".png";
                     this.cells[i][j] = new EmptyCell(path, new Position(i, j));
-                    
+
                 }
             }
         }

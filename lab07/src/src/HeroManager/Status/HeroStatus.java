@@ -135,7 +135,15 @@ public class HeroStatus extends DeathObservable implements iHeroStatus {
         if (food == 11) {
             this.food = 1;
             this.maxHP += 5;
-            this.currentHP += 5;
+            setCurrentHP(this.currentHP + 10);
+        }
+    }
+
+    public void setCurrentHP(int newHP) {
+        if (newHP > this.maxHP) {
+            this.currentHP = this.maxHP;
+        } else {
+            this.currentHP = newHP;
         }
     }
 
@@ -159,8 +167,8 @@ public class HeroStatus extends DeathObservable implements iHeroStatus {
                 this.maxEnergy = this.maxEnergy * 2;
                 break;
             case Earth:
-                this.maxHP += 5;
-                this.currentHP += 5;
+                this.maxHP += 10;
+                this.currentHP += 10;
                 break;
             default:
                 break;
