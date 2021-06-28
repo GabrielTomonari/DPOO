@@ -18,10 +18,103 @@
 ## Vídeo da Prévia
 > [Link para o vídeo](https://youtu.be/emUyXbDuNmo)
 
+## Vídeo do Jogo
+
 # Slides do Projeto
 
 ## Slides da Prévia
 [Link para slides](https://docs.google.com/presentation/d/1r2Jii_VHBkU03k71rF_9ruOg5X7HX8bxM-2oBistcn0/edit?usp=sharing)
+
+## Slides da Apresentação Final
+
+## Relatório de Evolução
+> O projeto começou com um jogo totalmente diferente. Com uma implementação estilo jogo de damas e com uma arquitetura mais simples. Após feedbacks do professor, resolvemos mudar completamente o projeto e fazer um jogo no estilo RPG.
+> Na nossa primeira fase de implementação, nos concentramos na framework JavaFX e na geração automática do tabuleiro. Construímos o mecanismo de colocação dos obstaculos automaticamente, assim como o jogador.
+> Na segunda fase de implementação focamos no complemento da inferface, adicionando as informações do personagem, como vida, energia etc. Além disso, construímos a lógica de movimentação do personagem, assim como a lógica de obtenção de comida, perda de energia e ganho de vida.
+> Já na última fase de implementação, focamos na lógica de combate e aquisição de genes.
+
+# Destaques de Código
+
+> O PrintableBoardState foi uma maneira elegante que encontramos de desacoplar o tabuleiro da interface gráfica. A partir desta classe, é possível obter uma versão imprimível do tabuleiro, possibilitando trabalhar não com os dados diretos do tabuleiro, mas sim com métodos que obtém os dados de cada célula de maneira dinâmica, permitindo a componentização e fácil modificação ou incremento do jogo.
+
+```java
+public class PrintableBoardState {
+    private int columnMax = 16;
+    private int lineMax = 16;
+    private String[][] images;
+    private int lineCounter;
+    private int columnCounter;
+    private boolean hasFinished;
+
+    public PrintableBoardState() {
+        this.images = new String[lineMax][columnMax];
+    }
+
+    public void appendImage(int i, int j, String path) {
+        this.images[i][j] = path;
+    }
+
+    public void resetCounter() {
+        this.lineCounter = 0;
+        this.columnCounter = 0;
+        hasFinished = false;
+    }
+
+    public int currentLine() {
+        return lineCounter;
+    }
+
+    public int currentColumn() {
+        return columnCounter;
+    }
+
+    public String getCurrentImage() {
+        return images[lineCounter][columnCounter];
+    }
+
+    public void changeToNextImage() {
+        columnCounter++;
+        if (columnCounter == columnMax) {
+            columnCounter = 0;
+            lineCounter++;
+            if (lineCounter == lineMax) {
+                hasFinished = true;
+            }
+        }
+    }
+
+    public boolean shouldPrintNext() {
+        return !hasFinished;
+    }
+}
+```
+
+# Destaques de Pattern
+> O pattern de Observer permite um funcionamento orientado por eventos. O observable é um emissor de eventos, como por exemplo quando o jogador coleta um item no mapa. O pattern reduz o acoplamento entre duas classes, permitindo fazer isso de forma dinâmica que facilita futuras implementações.
+
+## Diagrama do Pattern
+
+## Código do Pattern
+```java
+public abstract class BaseObervable<ListenerType, InfoType> {
+    protected List<ListenerType> observers = new ArrayList<>();
+
+    public void addObserver(ListenerType observer) {
+        this.observers.add(observer);
+    }
+
+    public void removeObserver(ListenerType observer) {
+        this.observers.remove(observer);
+    }
+
+    abstract protected void notifyListeners(InfoType info);
+}
+```
+
+# Conclusões e Trabalhos Futuros
+> Ao longo do projeto tivemos várias ideias que foram despriorizadas por falta de tempo. A primeira e mais simples foi da implementação de gifs animados no lugar do personagem e inimigos. Imaginamos que essa função não seja muito difícil de implementar, mas acabamos não dando prioridade.
+> Da mesma forma, acabamos simplificando bastante a lógica de combate por conta do tempo. A ideia inicial era de ter uma interface própria e separada para combate, com uma possível escolha de tipos de ataques, animações etc. Com a arquitetura implementada, não seria muito difícil fazer essas adições, mas acrescentaria bastante tempo de trabalho ao projeto e, por isso, acabamos não o fazendo.
+> Por fim, percebemos que a arquitetura proposta através de componentes e suas interfaces permitem a adição de novas funções de maneira muito rápida e sem interferir no funcionamento básico do jogo.
 
 # Documentação dos Componentes
 
@@ -52,7 +145,7 @@ item | detalhamento
 ----- | -----
 Classe | `lab07.src.src.BoardManager`
 Autores | `Antonio D Lucas Junior` <br> `Gabriel Eiji M. de M. Tomonari`
-Interfaces | `iBoardStateManager` <br> `iBoardView` <br> `iBoardGenerator`
+Interfaces | `iBoardManager` <br> `iBoardManConsumer`
 
 ### Interfaces
 
@@ -70,40 +163,33 @@ public interface iBoardStateManager extends iBoardGenerator, iBoardView {
 
 ## Detalhamento das Interfaces
 
-### Interface `iBoardGenerator`
+### Interface `iBoardManager`
 
-`Interface que representa classes que gerenciam criação de novos tabuleiros`.
+`?`.
 
 ```java
-public interface iBoardGenerator {
+public interface iBoardManager extends iBoardView, iBoardStateController, iHeroManConsumer, iUIManConsumer {
 
-    public iCell[][] generateNewBoard();
-    public void notifyNewBoard();
 }
 ```
 
-| Método             | Objetivo                                                                                                                      |
-| ------------------ | ----------------------------------------------------------------------------------------------------------------------------- |
-| `generateNewBoard` | `gera um novo estado para o tabuleiro, utilizado para gerar novas fases`                                                      |
-| `notifyNewBoard`   | `notifica ouvintes sobre geração de um novo tabuleiro, utilizada para reposicionar heroi e para possíveis animações com a UI` |
+### Interface `iBoardManConsumer`
 
-### Interface `iBoardView`
-
-`Interface que provida por classe que exportam uma versão do componente para impressão`.
+`?`.
 
 ```java
-public interface iBoardView {
-    public PrintableBoardState exportPrintableBoardState();
+public interface iBoardManConsumer {
+    public void connectBoard(iBoardManager board);
 }
 ```
 
 | Método                      | Objetivo                                                       |
 | --------------------------- | -------------------------------------------------------------- |
-| `exportPrintableBoardState` | `retorna um estado do tabuleiro simplificado para a impressão` |
+| `connectBoard` | `?` |
 
 ## Componente `UIManager`
 
-> Componente responsável por gerenciar o sistema de renderização das informações na Interface de Usuário. Suas responsabilidades envolvem, controle de clock, controle de scenas e renderização de imagens.
+> Componente responsável por gerenciar o sistema de renderização das informações na Interface de Usuário. Suas responsabilidades envolvem, controle de clock, controle de cenas e renderização de imagens.
 
 ![Componente](assets/previa/img/componente_uimanager.jpg)
 
@@ -112,7 +198,7 @@ item | detalhamento
 ----- | -----
 Classe | `lab07.src.src.UIManager`
 Autores | `Antonio D Lucas Junior` <br> `Gabriel Eiji M. de M. Tomonari`
-Interfaces | `iUIManager` <br> `iHeroManConsumer` <br> `iBoardManConsumer`
+Interfaces | `iUIManager` <br> `iUIManConsumer`
 
 ### Interfaces
 
@@ -155,33 +241,19 @@ public interface iUIManager {
 | `setStage`    | `seta o stage inicial do JAVAFX, necessário para a utilização do framework, o stage representa a janela exibida para o usuário. Além disso realiza configurações da tela como tamanho e título` |
 | `render`      | `renderiza o estado atual na interface para o usuario, chamada a cada pulso de clock`                                                                                                           |
 
-### Interface `iBoardManConsumer`
+### Interface `iUIManConsumer`
 
-`Interface que representam classe que precisam estar ligadas a algum iBoardManager`.
+`?`.
 
 ```java
-public interface iBoardManConsumer {
-    public void connectBoard(iBoardStateManager board);
+public interface iUIManConsumer {
+    public void connectUI(iUIManager uiManager);
 }
 ```
 
 | Método         | Objetivo                                                                                |
 | -------------- | --------------------------------------------------------------------------------------- |
-| `connectBoard` | `conecta o UIMager a algum boardManager, permitindo a comunicação entre os componentes` |
-
-### Interface `iHeroManConsumer`
-
-`Interface que representam classe que precisam estar ligadas a algum iHeroManager`.
-
-```java
-public interface iHeroManConsumer {
-    public void connectHero(iHeroManager hero);
-}
-```
-
-| Método         | Objetivo                                                                                |
-| -------------- | --------------------------------------------------------------------------------------- |
-| `connectBoard` | `conecta o UIMager a algum boardManager, permitindo a comunicação entre os componentes` |
+| `connectUI` | `?` |
 
 ## Componente `HeroManager`
 
@@ -194,7 +266,7 @@ item | detalhamento
 ----- | -----
 Classe | `lab07.src.src.HeroManager`
 Autores | `Antonio D Lucas Junior` <br> `Gabriel Eiji M. de M. Tomonari`
-Interfaces | `iHeroManager`
+Interfaces | `iHeroManager` <br> `iHeroManConsumer`
 
 ### Interfaces
 
@@ -238,22 +310,26 @@ public interface iHeroManager {
 | `expPrintableHeroStatus` | `retorna uma versão do estado do heroi, facilitada para a impressão`                   |
 | `placeHero`              | `altera a posição do herói para a posição inicial da sala, por hora setada como (0,0)` |
 
-## Componente `CombatManager`
+### Interface `iHeroManConsumer`
 
-> Componente responsável por gerenciar a lógica de combate do jogo, comunica-se com a UI para gerar um interface de combate e com o heroi para atualizar o status durante e após o combate.
+`Interface principal que expõem os métodos para os demais componentes`.
 
-![Componente](assets/previa/img/componente_combatmanager.jpg)
+```java
+public interface iHeroManager {
 
-**Ficha Técnica**
-item | detalhamento
------ | -----
-Classe | `lab07.src.src.CombatManager`
-Autores | `Antonio D Lucas Junior` <br> `Gabriel Eiji M. de M. Tomonari`
-Interfaces | `iBoardCombatManager`
+    public boolean isAlive();
 
-### Interfaces
+    public PrintableHeroStatus expPrintableHeroStatus();
 
-## (Ainda não implementado)
+    public void placeHero();
+}
+```
+
+| Método                   | Objetivo                                                                               |
+| ------------------------ | -------------------------------------------------------------------------------------- |
+| `isAlive`                | `informa se a vida do heroi é maior que zero, usada para continuar o loop do jogo`     |
+| `expPrintableHeroStatus` | `retorna uma versão do estado do heroi, facilitada para a impressão`                   |
+| `placeHero`              | `altera a posição do herói para a posição inicial da sala, por hora setada como (0,0)` |
 
 # Plano de Exceções
 
